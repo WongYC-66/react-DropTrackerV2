@@ -1,34 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect, createContext, useMemo } from 'react'
+
+import Header from './Header.jsx'
+import SearchBox from './SearchBox.jsx'
+import TargetBox from './targetBox.jsx'
+import ResultBox from './ResultBox.jsx'
+// 
+import data_MB from '../data/data_MB.json'
+import data_Mob from '../data/data_Mob.json'
+import data_Consume from '../data/data_Consume.json'
+import data_Eqp from '../data/data_Eqp.json'
+import data_Etc from '../data/data_Etc.json'
+import data_Ins from '../data/data_Ins.json'
+import data_MobMap from '../data/data_Mob_MapOnly.json'
+import data_Map from '../data/data_Map.json'
+
+
+export const TargetContext = createContext(null)
+export const SearchResultContext = createContext(null)
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [target, setTarget] = useState({})
+  const [searchResult, setSearchResult] = useState({})
+
+  useEffect(() => {
+    const data_item = { ...data_Consume, ...data_Eqp, ...data_Etc, ...data_Ins }
+    const data = { data_MB, data_Mob, data_item, data_MobMap, data_Map }
+
+    localStorage.setItem("data", JSON.stringify(data));
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div id="container" className='grid-container'>
+      <TargetContext.Provider value={{ target, setTarget }}>
+        <SearchResultContext.Provider value={{ searchResult, setSearchResult }}>
+          <Header />
+          <SearchBox />
+          <TargetBox />
+          <ResultBox />
+        </SearchResultContext.Provider>
+      </TargetContext.Provider>
+    </div>
   )
 }
 
