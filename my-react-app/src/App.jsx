@@ -2,7 +2,7 @@ import { useState, useEffect, createContext, useMemo } from 'react'
 
 import Header from './Header.jsx'
 import SearchBox from './SearchBox.jsx'
-import TargetBox from './targetBox.jsx'
+import TargetBox from './TargetBox.jsx'
 import ResultBox from './ResultBox.jsx'
 // 
 import data_MB from '../data/data_MB.json'
