@@ -3,15 +3,20 @@ import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 // 
 import MiniCard from "./MiniCard.jsx";
-let data = JSON.parse(localStorage.getItem("data"));
+let data
 
 function SearchBox() {
   const [selectedTab, setSelectedTab] = useState('Mob')
-  const [input, setInput] = useState('snail')
+  const [input, setInput] = useState('')
   const [displayList, setDisplayList] = useState([])
 
   useEffect(() => {
+    data = JSON.parse(localStorage.getItem("data"))
+  }, [])
+
+  useEffect(() => {
     // Update list when user Input / switch tab
+    if (!data) return console.error(data);
     let a = (selectedTab === "Mob") ? filterMob(data, input)
       : (selectedTab === "Item") ? filterItem(data, input)
         : alert('error')
@@ -71,7 +76,7 @@ function filterItem(data, input) {
     // .filter(x => (`${x[0]} ${x[1]}`).toLowerCase().includes(input)) // filter  ID & NAME
     .filter(x => (`${x[0]} ${x[1]} ${x[2]}`).toLowerCase().includes(input)) //  filter  ID & NAME & DESC
     .map(x => {
-      return{
+      return {
         id: x[0],
         name: x[1],
         desc: x[2] || null,

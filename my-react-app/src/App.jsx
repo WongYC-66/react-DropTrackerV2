@@ -14,9 +14,9 @@ import data_Ins from '../data/data_Ins.json'
 import data_MobMap from '../data/data_Mob_MapOnly.json'
 import data_Map from '../data/data_Map.json'
 
-
 export const TargetContext = createContext(null)
 export const SearchResultContext = createContext(null)
+let data = {}
 
 function App() {
 
@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     const data_item = { ...data_Consume, ...data_Eqp, ...data_Etc, ...data_Ins }
-    const data = { data_MB, data_Mob, data_item, data_MobMap, data_Map }
+    data = { data_MB, data_Mob, data_item, data_MobMap, data_Map }
 
     localStorage.setItem("data", JSON.stringify(data));
   }, []);
@@ -35,7 +35,7 @@ function App() {
       <TargetContext.Provider value={{ target, setTarget }}>
         <SearchResultContext.Provider value={{ searchResult, setSearchResult }}>
           <Header />
-          <SearchBox />
+          <SearchBox data={data}/>
           <TargetBox />
           <ResultBox />
         </SearchResultContext.Provider>

@@ -4,10 +4,14 @@ const data_MobIdImg = Object.fromEntries(data_fixMobImg.map(x => [Object.keys(x)
 const data_ItemIdImg = Object.fromEntries(data_fixItemImg.map(x => [Object.keys(x), Object.values(x)]))
 let data = JSON.parse(localStorage.getItem("data"));
 
+function reloadData(){
+    if(!data || Object.keys(data).length <= 0) data = JSON.parse(localStorage.getItem("data"));
+}
 // ---------------- utility-funciton -----------------------
 export function queryMaps(id) {
     // to return Array of map name [["streetName : mapName"], ["Maple Road : Snail Hunting Ground I"] ]
     // console.log("running queryMaps")
+    reloadData()
     let mapList = data.data_MobMap[id]
     // console.log(mapList)
     mapList = mapList.map(mapId => {
@@ -24,6 +28,7 @@ export function queryMaps(id) {
 
 export function queryItems(id, setSearchResult) {
     // const data = JSON.parse(localStorage.getItem("data"));
+    reloadData()
     if (!data.data_item[id]) return alert("id not found") // end if not tound
 
     // let name = data.data_item[id].name   // is Consume/Etc/Ins
@@ -48,6 +53,7 @@ export function queryItems(id, setSearchResult) {
 export const queryMobs = (id, setSearchResult) => {
     // const data = JSON.parse(localStorage.getItem("data"));
     // console.log(id)
+    reloadData()
     if (!data.data_Mob[id]) return alert("id not found") // end if not tound
     // let name = data.data_Mob[id]
     let dropTable = data.data_MB[id]
@@ -77,6 +83,7 @@ export function mobIdToImgUrl(id) {
     // console.log(data_MobIdImg)
     // console.log("running MobIdToImgUrl()")
     // console.log(id)
+    reloadData()
     let d = data_MobIdImg[id]
     if (d === undefined) return `https://maplestory.io/api/SEA/198/mob/${id}/render/stand`
     d = d[0]
@@ -88,6 +95,7 @@ export function itemIdToImgUrl(id) {
     // console.log("running itemIdToImgUrl()")
     // console.log(id)
     // if(!data || Object.keys(data).length <= 0) data = JSON.parse(localStorage.getItem("data")); // to fix first-loading bug
+    reloadData()
     if (!data) data = JSON.parse(localStorage.getItem("data")); // to fix first-loading bug
     // console.log(data)
     let name = data.data_item[id].name // check if scroll 
