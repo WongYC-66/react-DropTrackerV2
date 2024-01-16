@@ -10,7 +10,7 @@ function ResultBox() {
   const isItemList = listType === "itemList"
   const isMobList = listType === "mobList"
 
-  console.log(searchResult)
+  // console.log(searchResult)
   return (
     <div className="resultBox grid-item item-d">
       {hasResult && <>
@@ -34,7 +34,7 @@ function ResultBox() {
 }
 
 function ItemCard({ data, handleItemIconClick }) {
-  console.log(data)
+  // console.log(data)
   let strArr = [data.desc]
   if (data.desc) {
     strArr = data.desc.split("\\n")
@@ -57,7 +57,7 @@ function ItemCard({ data, handleItemIconClick }) {
 }
 
 function MobCard({ data, handleItemIconClick }) {
-  console.log(data)
+  // console.log(data)
   // return 
   return (
     <div className="card">

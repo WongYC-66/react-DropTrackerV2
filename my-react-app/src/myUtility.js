@@ -4,8 +4,8 @@ const data_MobIdImg = Object.fromEntries(data_fixMobImg.map(x => [Object.keys(x)
 const data_ItemIdImg = Object.fromEntries(data_fixItemImg.map(x => [Object.keys(x), Object.values(x)]))
 let data = JSON.parse(localStorage.getItem("data"));
 
-function reloadData(){
-    if(!data || Object.keys(data).length <= 0) data = JSON.parse(localStorage.getItem("data"));
+function reloadData() {
+    if ( !data || Object.keys(data).length <= 0) data = JSON.parse(localStorage.getItem("data"));
 }
 // ---------------- utility-funciton -----------------------
 export function queryMaps(id) {
@@ -46,7 +46,7 @@ export function queryItems(id, setSearchResult) {
         }
     })
     // console.log({ id, name, desc, dropTable })
-    setSearchResult({ dropTable, type: "mobList"})
+    setSearchResult({ dropTable, type: "mobList" })
 }
 
 

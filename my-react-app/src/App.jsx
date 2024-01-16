@@ -35,7 +35,7 @@ function App() {
       <TargetContext.Provider value={{ target, setTarget }}>
         <SearchResultContext.Provider value={{ searchResult, setSearchResult }}>
           <Header />
-          <SearchBox data={data}/>
+          <SearchBox />
           <TargetBox />
           <ResultBox />
         </SearchResultContext.Provider>

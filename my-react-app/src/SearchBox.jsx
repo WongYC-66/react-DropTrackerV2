@@ -3,25 +3,25 @@ import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 // 
 import MiniCard from "./MiniCard.jsx";
-let data
 
 function SearchBox() {
   const [selectedTab, setSelectedTab] = useState('Mob')
   const [input, setInput] = useState('')
   const [displayList, setDisplayList] = useState([])
+  const [scrollY, setScrollY] = useState(0)
+
+  const data = JSON.parse(localStorage.getItem("data"));
+  // console.log(data)
 
   useEffect(() => {
-    data = JSON.parse(localStorage.getItem("data"))
-  }, [])
+    if(!data) return
+    let max = scrollY <= 1000 ? 200 : 9999 
 
-  useEffect(() => {
-    // Update list when user Input / switch tab
-    if (!data) return console.error(data);
-    let a = (selectedTab === "Mob") ? filterMob(data, input)
-      : (selectedTab === "Item") ? filterItem(data, input)
+    let a = (selectedTab === "Mob") ? filterMob(input, max)
+      : (selectedTab === "Item") ? filterItem(input, max)
         : alert('error')
     setDisplayList(() => a)
-  }, [selectedTab, input])
+  }, [selectedTab, input, scrollY])
 
   // console.log(displayList)
 
@@ -38,7 +38,7 @@ function SearchBox() {
         <div className="searchBtn"><FaSearch /> SEARCH</div>
       </div>
 
-      <div id="searchBoxResult">
+      <div id="searchBoxResult" onScroll={(e) => setScrollY(e.target.scrollTop)}>
         {displayList.map(x => <MiniCard key={x.id} data={x} />)}
       </div>
     </div>
@@ -46,7 +46,10 @@ function SearchBox() {
 }
 
 
-function filterMob(data, input) {
+function filterMob(input, n) {
+  const data = JSON.parse(localStorage.getItem("data"));
+  if (!data) return
+  // console.log(data)
   input = input.toLowerCase()
   const mobDataArr = Object.entries(data.data_MB)
     // .map(x => [...x, data.data_Mob[x[0]]])
@@ -58,12 +61,15 @@ function filterMob(data, input) {
         name: x[1],
         type: 'mob',
       }
-    })
+    }).slice(0, n)
   // console.log(mobDataArr)
   return mobDataArr  // array of obj .eg. {id: '100100', name: 'Snail', type: 'mob'} , {}, {}....
 }
 
-function filterItem(data, input) {
+function filterItem(input, n) {
+  const data = JSON.parse(localStorage.getItem("data"));
+  if (!data) return
+
   input = input.toLowerCase()
   const dropItemsList = Object.values(data.data_MB)
   const dropItemSet = new Set()
@@ -82,7 +88,7 @@ function filterItem(data, input) {
         desc: x[2] || null,
         type: 'item',
       }
-    })
+    }).slice(0, n)
   //  consume/etc/Ins   {id: '4000019', name: 'Snail Shell', desc: 'Shell removed from a snail', type: 'item'}
   //  Eqp               {id: '1332029', name: 'Liu Bei Dagger', desc: null, type: 'item'}       
   // console.log(dropIdNameArr)
