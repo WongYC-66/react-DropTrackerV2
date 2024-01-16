@@ -10,15 +10,11 @@ function SearchBox() {
   const [displayList, setDisplayList] = useState([])
   const [scrollY, setScrollY] = useState(0)
 
-  const data = JSON.parse(localStorage.getItem("data"));
-  // console.log(data)
-
   useEffect(() => {
-    if(!data) return
-    let max = scrollY <= 1000 ? 200 : 9999 
-
-    let a = (selectedTab === "Mob") ? filterMob(input, max)
-      : (selectedTab === "Item") ? filterItem(input, max)
+    // let data = 
+    // if(!data) return
+    let a = (selectedTab === "Mob") ? filterMob(input)
+      : (selectedTab === "Item") ? filterItem(input)
         : alert('error')
     setDisplayList(() => a)
   }, [selectedTab, input, scrollY])
@@ -46,7 +42,7 @@ function SearchBox() {
 }
 
 
-function filterMob(input, n) {
+function filterMob(input) {
   const data = JSON.parse(localStorage.getItem("data"));
   if (!data) return
   // console.log(data)
@@ -61,12 +57,12 @@ function filterMob(input, n) {
         name: x[1],
         type: 'mob',
       }
-    }).slice(0, n)
+    })
   // console.log(mobDataArr)
   return mobDataArr  // array of obj .eg. {id: '100100', name: 'Snail', type: 'mob'} , {}, {}....
 }
 
-function filterItem(input, n) {
+function filterItem(input) {
   const data = JSON.parse(localStorage.getItem("data"));
   if (!data) return
 
@@ -88,7 +84,7 @@ function filterItem(input, n) {
         desc: x[2] || null,
         type: 'item',
       }
-    }).slice(0, n)
+    })
   //  consume/etc/Ins   {id: '4000019', name: 'Snail Shell', desc: 'Shell removed from a snail', type: 'item'}
   //  Eqp               {id: '1332029', name: 'Liu Bei Dagger', desc: null, type: 'item'}       
   // console.log(dropIdNameArr)
