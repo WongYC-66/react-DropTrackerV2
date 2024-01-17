@@ -30,13 +30,12 @@ function SearchBox() {
         <div onClick={() => setSelectedTab('Mob')} className={`tab ${selectedTab === 'Mob' ? "selected" : ""}`}>MOB</div>
         <div onClick={() => setSelectedTab('Item')} className={`tab ${selectedTab === 'Item' ? "selected" : ""}`} >ITEM</div>
       </div>
-
       <div className="searchSelectBar">
-        <GiDiceTarget onClick={()=>randomSearch(selectedTab, setTarget)}/>
+        <GiDiceTarget onClick={() => randomSearch(selectedTab, setTarget)} />
         <input value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
         <div className="searchBtn"><FaSearch /> SEARCH</div>
       </div>
-
+      <p>{`found ${displayList.length} record${displayList.length <= 1 ? '' : 's'}`}</p>
       <div id="searchBoxResult" onScroll={(e) => setScrollY(e.target.scrollTop)}>
         {displayList.map(x => <MiniCard key={x.id} data={x} />)}
       </div>
@@ -95,27 +94,27 @@ function filterItem(input) {
 }
 
 
-function randomSearch(selectedTab, setTarget){
+function randomSearch(selectedTab, setTarget) {
   console.log('doing random search')
   const data = JSON.parse(localStorage.getItem("data"));
   if (!data) return
 
-  if(selectedTab === 'Mob'){
+  if (selectedTab === 'Mob') {
     const randomId = [...Object.keys(data.data_MB)].sort(() => Math.random() - 0.5).pop()
     setTarget({
-      id : randomId,
-      name : data.data_Mob[randomId], 
-      type : 'mob',
+      id: randomId,
+      name: data.data_Mob[randomId],
+      type: 'mob',
     })
-  } else if(selectedTab === 'Item'){
+  } else if (selectedTab === 'Item') {
     const dropItemSet = new Set()
-    Object.values(data.data_MB).forEach(x => { x.forEach(y => dropItemSet.add(y))})
+    Object.values(data.data_MB).forEach(x => { x.forEach(y => dropItemSet.add(y)) })
     const randomId = [...dropItemSet].sort(() => Math.random() - 0.5).pop()
     setTarget({
-      id : randomId,
-      name : data.data_item[randomId].name || data.data_item[randomId], 
-      desc : data.data_item[randomId].desc || null, 
-      type : 'item',
+      id: randomId,
+      name: data.data_item[randomId].name || data.data_item[randomId],
+      desc: data.data_item[randomId].desc || null,
+      type: 'item',
     })
   }
 }

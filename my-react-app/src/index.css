@@ -237,6 +237,15 @@ input:focus{
   font-size: 0.8rem;
 }
 
+.searchBox > p {
+  width: 100%;
+  text-align: right;
+  align-self: flex-end;
+  padding-right: 15px;
+  background-color: var(--white2);
+}
+
+
 #searchBoxResult{
   overflow-y: auto;
   flex: 1;
