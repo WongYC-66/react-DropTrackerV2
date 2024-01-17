@@ -8,7 +8,7 @@ function SearchBox() {
   const [selectedTab, setSelectedTab] = useState('Mob')
   const [input, setInput] = useState('')
   const [displayList, setDisplayList] = useState([])
-  const [scrollY, setScrollY] = useState(0)
+  // const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     // let data = 
@@ -17,7 +17,7 @@ function SearchBox() {
       : (selectedTab === "Item") ? filterItem(input)
         : alert('error')
     setDisplayList(() => a)
-  }, [selectedTab, input, scrollY])
+  }, [selectedTab, input])
 
   // console.log(displayList)
 

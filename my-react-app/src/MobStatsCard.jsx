@@ -8,8 +8,13 @@ function MobStatsCard({ data }) {
         const fetchMobData = async () => {
             const fetchParameter = [
                 ['GMS', 64],
-                ['EMS', 82],
+                ['GMS', 82],
                 ['GMS', 107],
+                ['EMS', 55],
+                ['EMS', 82],
+                ['KMST', 1087],
+                ['CMST', 172],
+                ['CMS', 148],
                 ['SEA', 198]
             ]
             // fetch api for eqp data for at least 3 times if fail
@@ -33,10 +38,12 @@ function MobStatsCard({ data }) {
                         exp: x.meta.exp,
                         isUndead: x.meta.isUndead,
                         knockBack: x.meta.minimumPushDamage,
+                        version : `${fetchParameter[i][0]}  v${fetchParameter[i][1]}`,
                     }
-                    console.log(nextObj)
+                    // console.log(nextObj)
                     setMobData(nextObj)
                     setIsLoading(false)
+                    // console.log(`${fetchParameter[i][0]}  ${fetchParameter[i][1]}`)
                     return;  // no error then end.
                 } catch (err) {
                     setMobData({})
@@ -69,6 +76,11 @@ function MobStatsCard({ data }) {
             <div className="stat-row">
                 <p>is Undead  : </p>
                 <p>{mobData.isUndead ? "Yes" : "No"}</p>
+            </div>
+
+            <div className="stat-row">
+                <p>Info-version: </p>
+                <p>{mobData.version}</p>
             </div>
 
         </div>

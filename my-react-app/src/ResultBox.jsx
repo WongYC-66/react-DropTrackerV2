@@ -33,18 +33,24 @@ function ResultBox() {
   )
 }
 
+import { TargetContext } from './App.jsx';
+
 function ItemCard({ data, handleItemIconClick }) {
   // console.log(data)
+  
+  const { setTarget } = useContext(TargetContext);
+
   let strArr = [data.desc]
   if (data.desc) {
     strArr = data.desc.split("\\n")
   }
+
   return (
     <div className="card">
       <div className="left">
         <img src={itemIdToImgUrl(data.id)}
           alt="No image found"
-          onClick={() => handleItemIconClick(data.id)}
+          onClick={() => handleIconClick(data, 'item', setTarget)}
         ></img>
         <EqpUI location={"inDisplayList"} data={data} />
       </div>
@@ -58,13 +64,14 @@ function ItemCard({ data, handleItemIconClick }) {
 
 function MobCard({ data, handleItemIconClick }) {
   // console.log(data)
-  // return 
+  const { setTarget } = useContext(TargetContext);
+  
   return (
     <div className="card">
       <div className="left">
         <img src={mobIdToImgUrl(data.id)}
           alt="No image found"
-          onClick={() => handleItemIconClick(data.id)}
+          onClick={() => handleIconClick(data, 'mob', setTarget)}
         ></img>
       </div>
       <div className="right">
@@ -72,6 +79,10 @@ function MobCard({ data, handleItemIconClick }) {
       </div>
     </div>
   )
+}
+
+function handleIconClick(data, type, setTarget){
+  setTarget({id : data.id , name : data.name, desc : data.desc , type})
 }
 
 export default ResultBox
