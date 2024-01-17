@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 // 
 import EqpUI from './EqpUI/EqpUI.jsx'
+import MobStatsCard from './MobStatsCard.jsx'
 import { TargetContext, SearchResultContext } from './App.jsx';
 import { mobIdToImgUrl, itemIdToImgUrl, queryMaps, queryMobs, queryItems } from './myUtility.js'
 
@@ -33,7 +34,7 @@ function TargetBox() {
     setShowMobDetail(() => !showMobDetail)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     if (isMob) queryMobs(target.id, setSearchResult)
     else if (isItem) queryItems(target.id, setSearchResult)
   }, [target])
@@ -47,14 +48,17 @@ function TargetBox() {
         <div className='top'>
           <h1>{target.name}</h1>
           <img src={imgLink} alt="no image found" onClick={handleMobImgClick}></img>
+          {true && <MobStatsCard data={target} />}
         </div>
+        
         {showMobDetail && <div className='mapList'>
           {mobMapList.map((x, i) => <a href={"https://bbb.hidden-street.net/map/mini-map/" + x.toLowerCase().replaceAll(/ :? */g, '-')}
             key={i}
             target="_blank"
             dangerouslySetInnerHTML={{ __html: x }}></a>)}
         </div>}
-        <div className='stats'></div>
+        
+
       </>}
       {!isItem ? <></>
         : isEquip ? <EqpUI data={target} />
@@ -69,5 +73,7 @@ function TargetBox() {
     </div>
   )
 }
+
+
 
 export default TargetBox

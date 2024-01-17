@@ -8,7 +8,7 @@ function EqpUI({ location="", data }) {
     const [isLoading, setIsLoading] = useState(true)
 
     const isEquip = !data.desc
-    const toHideDefault = location === "inDisplayList"
+    const toHideDefault = location === "inDisplayList" // only for ResultBox usage
     // console.log(data.desc)
     // console.log(isEquip)
 

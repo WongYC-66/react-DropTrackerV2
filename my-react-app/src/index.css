@@ -320,6 +320,15 @@ input:focus{
   padding: 0 7.5%;
 }
 
+.targetBox .stats .stat-row{
+  display: grid;
+  grid: 1fr 1fr/ 1fr 1fr;
+  text-align: left;
+}
+.stat-row > p:first-child{
+  padding-right: 10px;
+}
+
 /* TargetBox */
 
 /* ResultBox */
