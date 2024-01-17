@@ -16,7 +16,7 @@
 html {
   font-size: 12px;
   font-family: 'Roboto', sans-serif;
-  cursor: url(maple_cursor.cur), pointer;
+  cursor: url("./maple_cursor.cur"), pointer;
 }
 
 * {
@@ -166,7 +166,7 @@ body {
 .mini-card,
 .targetBox img,
 .card img{
-  cursor: url(maple_move.cur), pointer;
+  cursor: url("./maple_move.cur"), pointer;
 }
 .tab.selected {
   background-color: var(--pink1);
