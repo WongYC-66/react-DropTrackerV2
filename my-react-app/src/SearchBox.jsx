@@ -1,13 +1,16 @@
 import { GiDiceTarget } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 // 
 import MiniCard from "./MiniCard.jsx";
+import { TargetContext } from './App.jsx';
 
 function SearchBox() {
   const [selectedTab, setSelectedTab] = useState('Mob')
   const [input, setInput] = useState('')
   const [displayList, setDisplayList] = useState([])
+  const { setTarget } = useContext(TargetContext);
+
   // const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
@@ -29,7 +32,7 @@ function SearchBox() {
       </div>
 
       <div className="searchSelectBar">
-        <GiDiceTarget />
+        <GiDiceTarget onClick={()=>randomSearch(selectedTab, setTarget)}/>
         <input value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
         <div className="searchBtn"><FaSearch /> SEARCH</div>
       </div>
@@ -89,6 +92,32 @@ function filterItem(input) {
   //  Eqp               {id: '1332029', name: 'Liu Bei Dagger', desc: null, type: 'item'}       
   // console.log(dropIdNameArr)
   return dropIdNameArr
+}
+
+
+function randomSearch(selectedTab, setTarget){
+  console.log('doing random search')
+  const data = JSON.parse(localStorage.getItem("data"));
+  if (!data) return
+
+  if(selectedTab === 'Mob'){
+    const randomId = [...Object.keys(data.data_MB)].sort(() => Math.random() - 0.5).pop()
+    setTarget({
+      id : randomId,
+      name : data.data_Mob[randomId], 
+      type : 'mob',
+    })
+  } else if(selectedTab === 'Item'){
+    const dropItemSet = new Set()
+    Object.values(data.data_MB).forEach(x => { x.forEach(y => dropItemSet.add(y))})
+    const randomId = [...dropItemSet].sort(() => Math.random() - 0.5).pop()
+    setTarget({
+      id : randomId,
+      name : data.data_item[randomId].name || data.data_item[randomId], 
+      desc : data.data_item[randomId].desc || null, 
+      type : 'item',
+    })
+  }
 }
 
 export default SearchBox
