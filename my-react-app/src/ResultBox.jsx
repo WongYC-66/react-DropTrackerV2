@@ -29,6 +29,10 @@ function ResultBox() {
           </>}
         </div>
       </>}
+
+      {!hasResult && <>
+        <img src="./errorMushroom.png"></img>
+      </>}
     </div>
   )
 }

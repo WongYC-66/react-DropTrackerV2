@@ -60,6 +60,7 @@ body {
   border-radius: 5px;
   font-size: 0.6rem;
   overflow-x: hidden;
+  /*  */
 }
 
 .item-a {
@@ -76,6 +77,11 @@ body {
 
 .item-d {
   grid-area: resultbox;
+}
+
+.item-c > img,
+.item-d > img {
+  margin: auto;
 }
 
 /* hover Grid effect */
@@ -365,6 +371,8 @@ input:focus{
 /* ResultBox */
 .resultBox{
   overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .display{

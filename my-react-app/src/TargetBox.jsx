@@ -70,6 +70,10 @@ function TargetBox() {
             </div>
           </>}
 
+      {!hasTarget && <>
+        <img src="./errorMushroom.png"></img>
+      </>}
+
     </div>
   )
 }
