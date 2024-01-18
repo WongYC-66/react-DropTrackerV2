@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card';
 
-function MobStatsCardMini({ data }) {
+function MobStatsCardMini({ data, isTarget }) {
     const [itemData, setItemData] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
@@ -49,7 +49,7 @@ function MobStatsCardMini({ data }) {
 
     return (
         <>
-            <Card className="border-0 my-2">
+            <Card className={`border-0 my-2 ${isTarget && `bg-secondary text-light `}`}>
                 <Card.Body className="p-0">
                     <Card.Title className="h6 m-0 p-0">{data.name}</Card.Title>
                     <Card.Text className="d-flex m-0 p-0 fs-xsm fw-lightjustify-content-start">
