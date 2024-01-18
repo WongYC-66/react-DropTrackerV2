@@ -6,9 +6,9 @@ function Header() {
 
   return (
     <>
-      <h1 className='h5 bg-light m-3 p-2 rounded'>SCOTTY's DROP TRACKER</h1>
+      <h1 className='h5 bg-light m-2 p-2 rounded'>SCOTTY's DROP TRACKER</h1>
       <hr></hr>
-      <div className="bg-light m-3 p-2 rounded">
+      <div className="bg-light m-2 p-2 rounded">
         <p>This website not affiliated, associated, authorized, endorsed by, or in any way officially connected with MapleRoyals.</p>
         <p>The drop data used for this website was taken from the Monster Book data in the Data folder of the MapleRoyals</p>
         <p>Images were taken from <a href="https://maplestory.io/">maplestory.io</a></p>

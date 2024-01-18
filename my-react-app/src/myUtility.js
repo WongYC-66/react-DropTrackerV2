@@ -5,7 +5,7 @@ const data_ItemIdImg = Object.fromEntries(data_fixItemImg.map(x => [Object.keys(
 let data = JSON.parse(localStorage.getItem("data"));
 
 function reloadData() {
-    if ( !data || Object.keys(data).length <= 0) data = JSON.parse(localStorage.getItem("data"));
+    if (!data || Object.keys(data).length <= 0) data = JSON.parse(localStorage.getItem("data"));
 }
 // ---------------- utility-funciton -----------------------
 export function queryMaps(id) {
@@ -42,10 +42,12 @@ export function queryItems(id, setSearchResult) {
         // x[0] = id of mob
         return {
             id: x[0],
-            name: data.data_Mob[parseInt(x[0])]
+            name: data.data_Mob[parseInt(x[0])],
+            type: 'mob',
         }
     })
-    // console.log({ id, name, desc, dropTable })
+    // console.log(dropTable)
+    // return
     setSearchResult({ dropTable, type: "mobList" })
 }
 
@@ -63,7 +65,9 @@ export const queryMobs = (id, setSearchResult) => {
             // item isEqp, without description
             return {
                 id: x,
-                name: result
+                name: result,
+                type: 'item',
+
             }
         }
         else {
@@ -71,11 +75,14 @@ export const queryMobs = (id, setSearchResult) => {
             return {
                 id: x,
                 name: result.name,
-                desc: result.desc
+                desc: result.desc,
+                type: 'item',
+
             }
         }
     })
     // console.log({ id, dropTable })
+    // console.log(dropTable)
     setSearchResult({ dropTable, type: "itemList" })
 }
 

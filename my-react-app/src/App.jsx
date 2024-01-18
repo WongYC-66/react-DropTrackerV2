@@ -47,7 +47,7 @@ function App() {
           </Row>
           <Row className='justify-content-center'>
             {hasTarget && <TargetBox />} 
-            <Col sm={8} className='m-1 bg-primary rounded'>   {hasSearchResult && <ResultBox />}   </Col>
+            <Col sm={8} className='m-1 bg-primary p-0 rounded'>   {hasSearchResult && <ResultBox />}   </Col>
           </Row>
         </Container>
       </SearchResultContext.Provider>

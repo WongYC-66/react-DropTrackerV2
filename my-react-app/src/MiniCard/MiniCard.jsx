@@ -7,6 +7,7 @@ import { mobIdToImgUrl, itemIdToImgUrl } from '../myUtility.js'
 import { TargetContext } from '../App.jsx';
 
 function MiniCard({ data }) {
+    // {id: '100100', name: 'Snail', type: 'mob'}
     // console.log(data)
     const { target, setTarget } = useContext(TargetContext);
     const isTarget = data.id === target.id

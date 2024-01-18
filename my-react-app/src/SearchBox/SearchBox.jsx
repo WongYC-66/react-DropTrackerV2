@@ -45,8 +45,6 @@ function SearchBox() {
   }
   // console.log(displayList)
 
-  // return(<div className="searchBox grid-item item-b">im searchBox</div>)
-
   return (
     <div className="d-flex flex-column m-0 p-0">
       <div>
