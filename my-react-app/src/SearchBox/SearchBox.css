@@ -1,0 +1,55 @@
+:root {
+    --blue1: #8EAFC0;
+    --blue2: #526C80;
+    --blue3: #718b9b;
+    --white1: #F2F0E9;
+    --white2: #FFFFFF;
+    --orange1: #c37328;
+    --orange2: #f8a95e;
+    --pink1: #ef6384;
+    --grey1: #b2b2b2;
+    --grey2: #e6e6e6;
+}
+
+div.tab-content {
+    border-top: 3px solid var(--pink1);
+}
+
+ul.nav-tabs {
+    margin-top: 1rem !important;
+    margin-bottom: 0 !important;
+    border-bottom: 0;
+}
+
+.nav-link {
+    background-color: var(--grey1) !important;
+    color: var(--white2) !important;
+    border: 2.5px solid black !important;
+    border-bottom: none !important;
+}
+
+.nav-link.active {
+    background-color: var(--pink1) !important;
+    transform: scale(1.1);
+    transform: translateY(-1px);
+}
+
+
+svg:hover {
+    color: var(--pink1);
+    animation: zoom_rotation 2s ease-in-out infinite;
+}
+
+@keyframes zoom_rotation {
+    0% {
+        transform: rotate(0deg) scale(1.5);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(2.0);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1.5);
+    }
+}

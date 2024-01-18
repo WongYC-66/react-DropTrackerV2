@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react'
 // 
-import EqpUI from './EqpUI/EqpUI.jsx'
-import MobStatsCard from './MobStatsCard.jsx'
-import { TargetContext, SearchResultContext } from './App.jsx';
-import { mobIdToImgUrl, itemIdToImgUrl, queryMaps, queryMobs, queryItems } from './myUtility.js'
+import EqpUI from '../EqpUI/EqpUI.jsx'
+import MobStatsCard from '../MobStatsCard/MobStatsCard.jsx'
+import { TargetContext, SearchResultContext } from '../App.jsx';
+import { mobIdToImgUrl, itemIdToImgUrl, queryMaps, queryMobs, queryItems } from '../myUtility.js'
 
 function TargetBox() {
   const [showMobDetail, setShowMobDetail] = useState(false)
@@ -40,7 +40,7 @@ function TargetBox() {
   }, [target])
 
   // console.log(searchResult)
-
+  // return ( <div className="targetBox grid-item item-c">im targetBox</div>)
 
   return (
     <div className="targetBox grid-item item-c">

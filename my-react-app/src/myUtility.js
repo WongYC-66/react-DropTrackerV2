@@ -1,5 +1,5 @@
-import data_fixMobImg from './data_fixMobImg.json'
-import data_fixItemImg from './data_fixItemImg.json'
+import data_fixMobImg from './fixImgData/data_fixMobImg.json'
+import data_fixItemImg from './fixImgData/data_fixItemImg.json'
 const data_MobIdImg = Object.fromEntries(data_fixMobImg.map(x => [Object.keys(x), Object.values(x)]))
 const data_ItemIdImg = Object.fromEntries(data_fixItemImg.map(x => [Object.keys(x), Object.values(x)]))
 let data = JSON.parse(localStorage.getItem("data"));

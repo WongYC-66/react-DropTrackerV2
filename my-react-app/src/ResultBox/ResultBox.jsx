@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react'
-import { mobIdToImgUrl, itemIdToImgUrl } from './myUtility.js'
-import { SearchResultContext } from './App.jsx';
-import EqpUI from './EqpUI/EqpUI.jsx';
+import { mobIdToImgUrl, itemIdToImgUrl } from '../myUtility.js'
+import { SearchResultContext } from '../App.jsx';
+import EqpUI from '../EqpUI/EqpUI.jsx';
 
 function ResultBox() {
   const { searchResult } = useContext(SearchResultContext)
@@ -11,6 +11,9 @@ function ResultBox() {
   const isMobList = listType === "mobList"
 
   // console.log(searchResult)
+
+  // return(<div className="resultBox grid-item item-d">im result box</div>)
+  
   return (
     <div className="resultBox grid-item item-d">
       {hasResult && <>
@@ -37,7 +40,7 @@ function ResultBox() {
   )
 }
 
-import { TargetContext } from './App.jsx';
+import { TargetContext } from '../App.jsx';
 
 function ItemCard({ data, handleItemIconClick }) {
   // console.log(data)
