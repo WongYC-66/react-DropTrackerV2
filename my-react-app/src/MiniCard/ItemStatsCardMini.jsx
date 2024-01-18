@@ -51,7 +51,7 @@ function MobStatsCardMini({ data, isTarget }) {
         <>
             <Card className={`border-0 my-2 ${isTarget && `bg-secondary text-light `}`}>
                 <Card.Body className="p-0">
-                    <Card.Title className="h6 m-0 p-0">{data.name}</Card.Title>
+                    <Card.Title className="h5 m-0 p-0">{data.name}</Card.Title>
                     <Card.Text className="d-flex m-0 p-0 fs-xsm fw-lightjustify-content-start">
                         {!isLoading && `${itemData.overallCategory} / ${itemData.category} - ${itemData.subCategory}`}
                     </Card.Text>
