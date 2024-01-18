@@ -5,7 +5,7 @@ function Header() {
   // return (<div className="header grid-item item-a">im header box</div>)
 
   return (
-    <>
+    <div className="d-flex flex-column justify-content-between">
       <h1 className='h5 bg-light m-2 p-2 rounded'>SCOTTY's DROP TRACKER</h1>
       <hr></hr>
       <div className="bg-light m-2 p-2 rounded">
@@ -16,8 +16,8 @@ function Header() {
         <p>Created by: ScottY5C</p>
         <p>Designed by: NerZu</p>
       </div>
-      <Image src="./owl.png" fluid className='mx-auto'></Image>
-    </>
+      <Image src="./owl.png" className='d-block mx-auto rounded w-100' alt="image not found" fluid ></Image>
+    </div>
   )
 }
 

@@ -46,14 +46,13 @@ function SearchBox() {
   // console.log(displayList)
 
   return (
-    <div className="d-flex flex-column m-0 p-0">
-      <div>
-
+    <div className="d-flex flex-column m-0 p-0 h-100 bg-primary">
+      <div className="flex-grow-1">
         <Tabs
           id="controlled-tab"
           activeKey={selectedTab}
           onSelect={value => setSelectedTab(value)}
-          className="m-3 me-5 flex-grow-1 rounded"
+          className="m-3 me-5"
         >
           <Tab eventKey="Mob" title="Mob" className="bg-light mx-1">
             {/* Search Select, input Bar */}
@@ -91,14 +90,10 @@ function SearchBox() {
       </div>
 
       {/* Pagination */}
-      <div>
-
-        <Pagination className="my-0 justify-content-end">
-          <Pagination.Prev onClick={() => handlePaginationClick('prev')} disabled={pageNum === 1} />
-          <Pagination.Next onClick={() => handlePaginationClick('next')} disabled={reachedLastPage} />
-        </Pagination>
-      </div>
-
+      <Pagination className="m-2 justify-content-end">
+        <Pagination.Prev onClick={() => handlePaginationClick('prev')} disabled={pageNum === 1} />
+        <Pagination.Next onClick={() => handlePaginationClick('next')} disabled={reachedLastPage} />
+      </Pagination>
     </div>
   )
 }
