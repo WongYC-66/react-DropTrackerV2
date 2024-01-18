@@ -42,12 +42,12 @@ function App() {
       <SearchResultContext.Provider value={{ searchResult, setSearchResult }}>
         <Container fluid className='mt-5 '>
           <Row className='justify-content-center'>
-            <Col sm={4} className='m-1 bg-primary p-0 rounded'>  <Header /> </Col>
             <Col sm={4} className='m-1 bg-primary p-0 rounded'>   <SearchBox />    </Col>
+            <Col sm={4} className='m-1 bg-primary p-0 rounded'>  <Header /> </Col>
           </Row>
           <Row className='justify-content-center'>
-            <Col sm={4} className='m-1 bg-primary rounded'>   {hasTarget && <TargetBox />}   </Col>
-            <Col sm={4} className='m-1 bg-primary rounded'>   {hasSearchResult && <ResultBox />}   </Col>
+            {hasTarget && <TargetBox />} 
+            <Col sm={8} className='m-1 bg-primary rounded'>   {hasSearchResult && <ResultBox />}   </Col>
           </Row>
         </Container>
       </SearchResultContext.Provider>

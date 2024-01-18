@@ -40,7 +40,7 @@ function TargetBox() {
   }, [target])
 
   // console.log(searchResult)
-  // return ( <div className="targetBox grid-item item-c">im targetBox</div>)
+  return ( <></> ) // no need DOM, only need variable update xD
 
   return (
     <div className="targetBox grid-item item-c">

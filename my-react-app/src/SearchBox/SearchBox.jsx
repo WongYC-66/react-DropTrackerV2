@@ -48,52 +48,58 @@ function SearchBox() {
   // return(<div className="searchBox grid-item item-b">im searchBox</div>)
 
   return (
-    <div className="d-flex flex-column">
-      <Tabs
-        id="controlled-tab"
-        activeKey={selectedTab}
-        onSelect={value => setSelectedTab(value)}
-        className="m-3 me-5 flex-grow-1 rounded"
-      >
-        <Tab eventKey="Mob" title="Mob" className="bg-light mx-1">
-          {/* Search Select, input Bar */}
-          <div className="d-flex px-3 justify-content-between align-items-center">
-            <GiDiceTarget className="col-1 display-1 text-danger py-0 my-0" onClick={() => randomSearch(selectedTab, setTarget)} />
-            <input className="col-6 border rounded py-1" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
-            <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap justify-content-center a align-items-center column-gap-1" variant="warning">
-              <FaSearch className="fs-6" /> Search</Button>
-          </div>
+    <div className="d-flex flex-column m-0 p-0">
+      <div>
 
-          {/* display Result of Mob List */}
-          <p className="m-0 p-0 text-end">{`found ${displayList.length} record${displayList.length <= 1 ? '' : 's'}`}</p>
-          <div className="">
-            {displayList.slice(cardStartIndex, cardEndIndex).map(x => <MiniCard key={x.id} data={x} />)}
-          </div>
+        <Tabs
+          id="controlled-tab"
+          activeKey={selectedTab}
+          onSelect={value => setSelectedTab(value)}
+          className="m-3 me-5 flex-grow-1 rounded"
+        >
+          <Tab eventKey="Mob" title="Mob" className="bg-light mx-1">
+            {/* Search Select, input Bar */}
+            <div className="d-flex px-3 justify-content-between align-items-center">
+              <GiDiceTarget className="col-1 display-1 text-danger py-0 my-0" onClick={() => randomSearch(selectedTab, setTarget)} />
+              <input className="col-6 border rounded py-1" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
+              <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap justify-content-center a align-items-center column-gap-1" variant="warning">
+                <FaSearch className="fs-6" /> Search</Button>
+            </div>
 
-        </Tab>
-        <Tab eventKey="Item" title="Item" className="bg-light mx-1">
-          {/* Search Select, input Bar */}
-          <div className="d-flex px-3 justify-content-between align-items-center">
-            <GiDiceTarget className="col-1 display-1 text-danger" onClick={() => randomSearch(selectedTab, setTarget)} />
-            <input className="col-6 border rounded py-1" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
-            <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap justify-content-center a align-items-center column-gap-1" variant="warning">
-              <FaSearch className="fs-6" /> Search</Button>
-          </div>
+            {/* display Result of Mob List */}
+            <p className="m-0 p-0 text-end">{`found ${displayList.length} record${displayList.length <= 1 ? '' : 's'}`}</p>
+            <div className="">
+              {displayList.slice(cardStartIndex, cardEndIndex).map(x => <MiniCard key={x.id} data={x} />)}
+            </div>
+
+          </Tab>
+          <Tab eventKey="Item" title="Item" className="bg-light mx-1">
+            {/* Search Select, input Bar */}
+            <div className="d-flex px-3 justify-content-between align-items-center">
+              <GiDiceTarget className="col-1 display-1 text-danger" onClick={() => randomSearch(selectedTab, setTarget)} />
+              <input className="col-6 border rounded py-1" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
+              <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap justify-content-center a align-items-center column-gap-1" variant="warning">
+                <FaSearch className="fs-6" /> Search</Button>
+            </div>
 
 
-          {/* display Result of Mob List */}
-          <p className="m-0 p-0 text-end">{`found ${displayList.length} record${displayList.length <= 1 ? '' : 's'}`}</p>
-          <div className="">
-            {displayList.slice(cardStartIndex, cardEndIndex).map(x => <MiniCard key={x.id} data={x} />)}
-          </div>
-        </Tab>
-      </Tabs>
+            {/* display Result of Mob List */}
+            <p className="m-0 p-0 text-end">{`found ${displayList.length} record${displayList.length <= 1 ? '' : 's'}`}</p>
+            <div className="">
+              {displayList.slice(cardStartIndex, cardEndIndex).map(x => <MiniCard key={x.id} data={x} />)}
+            </div>
+          </Tab>
+        </Tabs>
+      </div>
 
       {/* Pagination */}
-      <Pagination className="my-0 justify-content-end">
-        <Pagination.Prev onClick={() => handlePaginationClick('prev')} disabled={pageNum === 1} />
-        <Pagination.Next onClick={() => handlePaginationClick('next')} disabled={reachedLastPage} />
-      </Pagination>
+      <div>
+
+        <Pagination className="my-0 justify-content-end">
+          <Pagination.Prev onClick={() => handlePaginationClick('prev')} disabled={pageNum === 1} />
+          <Pagination.Next onClick={() => handlePaginationClick('next')} disabled={reachedLastPage} />
+        </Pagination>
+      </div>
 
     </div>
   )

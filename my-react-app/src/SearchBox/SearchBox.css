@@ -21,6 +21,17 @@ ul.nav-tabs {
     border-bottom: 0;
 }
 
+/* div.tab-content,
+div[role="tabpanel"]{
+    height: 100% !important;
+    flex-grow: 1;
+} */
+div.d-flex.flex-column > div:first-child{
+    flex: 1 !important;
+    height: 100vh !important;
+    background-color: #718b9b;
+}
+
 .nav-link {
     background-color: var(--grey1) !important;
     color: var(--white2) !important;
