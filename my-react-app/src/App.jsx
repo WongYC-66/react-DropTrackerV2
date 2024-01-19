@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // 
-import MyContainer from './Container/myContainer.jsx';
+import MyContainer from './Container/MyContainer.jsx';
 import Header from './Header/Header.jsx'
 import SearchBox from './SearchBox/SearchBox.jsx'
 import TargetBox from './TargetBox/TargetBox.jsx'
@@ -17,7 +17,6 @@ import data_Etc from '../data/data_Etc.json'
 import data_Ins from '../data/data_Ins.json'
 import data_MobMap from '../data/data_Mob_MapOnly.json'
 import data_Map from '../data/data_Map.json'
-import { FaTransgender } from 'react-icons/fa';
 
 export const TargetContext = createContext(null)
 export const SearchResultContext = createContext(null)
