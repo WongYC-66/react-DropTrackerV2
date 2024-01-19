@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+// 
+import styles from './MobStatsCard.module.css'
 
 function MobStatsCard({ data }) {
     const [mobData, setMobData] = useState({})
@@ -25,10 +30,10 @@ function MobStatsCard({ data }) {
                     x = await (x.json())
                     // return setEqpData(x)
                     let nextObj = {
-                        name: x.name, 
+                        name: x.name,
                         id: x.id,
-                        level: x.meta.level, 
-                        maxHP: x.meta.maxHP, 
+                        level: x.meta.level,
+                        maxHP: x.meta.maxHP,
                         maxMP: x.meta.maxMP,
                         WDEF: x.meta.physicalDefense,
                         WDMG: x.meta.physicalDamage,
@@ -37,8 +42,9 @@ function MobStatsCard({ data }) {
                         accuracy: x.meta.accuracy,
                         exp: x.meta.exp,
                         isUndead: x.meta.isUndead,
+                        isBoss: x.meta.isBoss || false,
                         knockBack: x.meta.minimumPushDamage,
-                        version : `${fetchParameter[i][0]}  v${fetchParameter[i][1]}`,
+                        version: `${fetchParameter[i][0]}  v${fetchParameter[i][1]}`,
                     }
                     // console.log(nextObj)
                     setMobData(nextObj)
@@ -56,38 +62,45 @@ function MobStatsCard({ data }) {
         fetchMobData()
     }, [data])
 
+    // console.log(typeof mobData.level)
+
     return (
-        <div className='stats'>
-            <div className="stat-row">
-                <p>Level : </p>
-                <p>{numToString(mobData.level)}</p>
-            </div>
+        <>
+            {isLoading ? <span className={`${styles.loader} d-block text-center mx-auto`}></span>
+                : (typeof mobData.level !== "number") ? <span>No Info</span>
+                    :
+                    <div className='stats'>
+                        {mobData.isBoss && <h1 className="h-6 fs-2 text-danger text-center">BOSS</h1>}
+                        <Container>
+                            <Row>
+                                <Col xs={5}>Level</Col>
+                                <Col xs={1}>:</Col>
+                                <Col>{numToString(mobData.level)}</Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5}>HP</Col>
+                                <Col xs={1}>:</Col>
+                                <Col>{numToString(mobData.maxHP)}</Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5}>is Undead </Col>
+                                <Col xs={1}>:</Col>
+                                <Col>{mobData.isUndead ? "Yes" : "No"}</Col>
+                            </Row>
+                            <Row>
+                                <Col xs={5}>Info-version</Col>
+                                <Col xs={1}>:</Col>
+                                <Col>{mobData.version}</Col>
+                            </Row>
+                        </Container>
 
-            <div className="stat-row">
-                <p>HP : </p>
-                <p>{numToString(mobData.maxHP)}</p>
-            </div>
-            
-            {/* <div className="stat-row">
-                <p>Exp : </p>
-                <p>{numToString(mobData.exp)}</p>
-            </div> */}
-
-            <div className="stat-row">
-                <p>is Undead  : </p>
-                <p>{mobData.isUndead ? "Yes" : "No"}</p>
-            </div>
-
-            <div className="stat-row">
-                <p>Info-version: </p>
-                <p>{mobData.version}</p>
-            </div>
-
-        </div>
+                    </div>
+            }
+        </>
     )
 }
 
-function numToString(x){
+function numToString(x) {
     return parseInt(x).toLocaleString("en-US");
 }
 
