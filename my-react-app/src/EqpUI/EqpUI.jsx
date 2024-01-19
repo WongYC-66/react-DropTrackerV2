@@ -93,7 +93,7 @@ function EqpUI({ location = "", data }) {
             {!isEquip ? <></> :
                 isLoading ? <span className={styles.loader}></span> :
                     eqpData.overallCategory !== "EQUIP" ? <span>no info</span> :
-                        <Container sm={12}>
+                        <Container sm={12} className='fs-6 fw-lighter'>
                             <Row>
                                 <Col className='h6'>{eqpData.name} </Col>
                             </Row>
@@ -144,120 +144,120 @@ function EqpUI({ location = "", data }) {
                             <Row>
                                 {/* stats */}
                                 <Row>
-                                    <Col xs={7}><BsDot />ATTACK SPEED</Col>
+                                    <Col xs={5}><BsDot />CATEGORY</Col>
                                     <Col xs={1}>:</Col>
-                                    <Col xs={4}>: {eqpData.subCategory}</Col>
+                                    <Col xs={4}>{eqpData.subCategory}</Col>
                                 </Row>
 
                                 {!!eqpData.attackSpeed &&
                                     <Row>
-                                        <Col xs={7}><BsDot />ATTACK SPEED</Col>
+                                        <Col xs={5}><BsDot />ATTACK SPEED</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4}>: {attkSpeedToText(eqpData.attackSpeed)} ({eqpData.attackSpeed})</Col>
+                                        <Col xs={4}>{attkSpeedToText(eqpData.attackSpeed)} ({eqpData.attackSpeed})</Col>
                                     </Row>}
 
                                 {!!eqpData.incSTR &&
                                     <Row>
-                                        <Col xs={7}><BsDot />STR</Col>
+                                        <Col xs={5}><BsDot />STR</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incSTR, "")}</Col>
+                                        <Col xs={4} className='fw-bold'> +{rangeCalculator(eqpData.incSTR, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incDEX &&
                                     <Row>
-                                        <Col xs={7}><BsDot />DEX</Col>
+                                        <Col xs={5}><BsDot />DEX</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incDEX, "")}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incDEX, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incINT &&
                                     <Row>
-                                        <Col xs={7}><BsDot />INT</Col>
+                                        <Col xs={5}><BsDot />INT</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incINT, "")}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incINT, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incLUK &&
                                     <Row>
-                                        <Col xs={7}><BsDot />LUK</Col>
+                                        <Col xs={5}><BsDot />LUK</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incLUK, "")}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incLUK, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incHP &&
                                     <Row>
-                                        <Col xs={7}><BsDot />HP</Col>
+                                        <Col xs={5}><BsDot />HP</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incHP, "", 10)}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incHP, "", 10)}</Col>
                                     </Row>}
 
                                 {!!eqpData.incMP &&
                                     <Row>
-                                        <Col xs={7}><BsDot />MP</Col>
+                                        <Col xs={5}><BsDot />MP</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incMP, "", 10)}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incMP, "", 10)}</Col>
                                     </Row>}
 
                                 {!!eqpData.incWATT &&
                                     <Row>
-                                        <Col xs={7}><BsDot />WEAPON ATTACK</Col>
+                                        <Col xs={5}><BsDot />WEAPON ATTACK</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incWATT, "showGodly")}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incWATT, "showGodly")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incMATT &&
                                     <Row>
-                                        <Col xs={7}><BsDot />MAGIC ATTACK</Col>
+                                        <Col xs={5}><BsDot />MAGIC ATTACK</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incMATT, "showGodly")}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incMATT, "showGodly")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incWDEF &&
                                     <Row>
-                                        <Col xs={7}><BsDot />WEAPON DEF</Col>
+                                        <Col xs={5}><BsDot />WEAPON DEF</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incWDEF, "", 10)}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incWDEF, "", 10)}</Col>
                                     </Row>}
 
                                 {!!eqpData.incMDEF &&
                                     <Row>
-                                        <Col xs={7}><BsDot />MAGIC DEF</Col>
+                                        <Col xs={5}><BsDot />MAGIC DEF</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incMDEF, "", 10)}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incMDEF, "", 10)}</Col>
                                     </Row>}
 
                                 {!!eqpData.incAcc &&
                                     <Row>
-                                        <Col xs={7}><BsDot />ACCURACY</Col>
+                                        <Col xs={5}><BsDot />ACCURACY</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incACC, "")}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incACC, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incEVA &&
                                     <Row>
-                                        <Col xs={7}><BsDot />AVOIDABILITY</Col>
+                                        <Col xs={5}><BsDot />AVOIDABILITY</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incEVA, "")}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incEVA, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incSpeed &&
                                     <Row>
-                                        <Col xs={7}><BsDot />SPEED</Col>
+                                        <Col xs={5}><BsDot />SPEED</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incSpeed, "")}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incSpeed, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incJUMP &&
                                     <Row>
-                                        <Col xs={7}><BsDot />JUMP</Col>
+                                        <Col xs={5}><BsDot />JUMP</Col>
                                         <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>: +{rangeCalculator(eqpData.incJUMP, "")}</Col>
+                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incJUMP, "")}</Col>
                                     </Row>}
 
                                 <Row>
-                                    <Col xs={7}><BsDot />NUMBER OF UPGRADES AVAILABLE</Col>
+                                    <Col xs={5}><BsDot />NUMBER OF UPGRADES AVAILABLE</Col>
                                     <Col xs={1}>:</Col>
-                                    <Col xs={4} className='fw-bold'>: {eqpData.slot}</Col>
+                                    <Col xs={4} className='fw-bold'>{eqpData.slot}</Col>
                                 </Row>
 
                             </Row>
