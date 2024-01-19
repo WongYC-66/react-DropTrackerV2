@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 import { BsDot } from "react-icons/bs";
 // 
 import { itemIdToImgUrl, attkSpeedToText } from '../myUtility.js'
-import styles from "./EqpUI.module.css";
 
 function EqpUI({ location = "", data }) {
     // console.log(data)
