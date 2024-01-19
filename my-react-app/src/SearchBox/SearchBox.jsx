@@ -9,10 +9,10 @@ import Pagination from 'react-bootstrap/Pagination';
 // 
 import MiniCard from "../MiniCard/MiniCard.jsx";
 import { TargetContext } from '../App.jsx';
-import "./SearchBox.css"; // abandon Grid first. see how first
+import "./SearchBox.css";
 
 function SearchBox() {
-  const [selectedTab, setSelectedTab] = useState('Mob')
+  const [selectedTab, setSelectedTab] = useState('MOB')
   const [input, setInput] = useState('')
   const [pageNum, setPageNum] = useState(1)
   const [displayList, setDisplayList] = useState([])
@@ -26,8 +26,8 @@ function SearchBox() {
   useEffect(() => {
     // let data = 
     // if(!data) return
-    let a = (selectedTab === "Mob") ? filterMob(input)
-      : (selectedTab === "Item") ? filterItem(input)
+    let a = (selectedTab === "MOB") ? filterMob(input)
+      : (selectedTab === "ITEM") ? filterItem(input)
         : alert('error')
     setPageNum(1)
     setDisplayList(() => a)
@@ -46,7 +46,7 @@ function SearchBox() {
   // console.log(displayList)
 
   return (
-    <div className="d-flex flex-column m-0 p-0 h-100 bg-primary">
+    <div className="d-flex flex-column m-0 p-0 h-100 rounded">
       <div className="flex-grow-1">
         <Tabs
           id="controlled-tab"
@@ -54,13 +54,13 @@ function SearchBox() {
           onSelect={value => setSelectedTab(value)}
           className="m-3 me-5"
         >
-          <Tab eventKey="Mob" title="Mob" className="bg-light mx-1">
+          <Tab eventKey="MOB" title="MOB" className="bg-light border-bottom border-2 border-maple-border-1">
             {/* Search Select, input Bar */}
-            <div className="d-flex px-3 justify-content-between align-items-center">
-              <GiDiceTarget className="col-1 display-1 text-danger py-0 my-0" onClick={() => randomSearch(selectedTab, setTarget)} />
-              <input className="col-6 border rounded py-1" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
-              <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap justify-content-center a align-items-center column-gap-1" variant="warning">
-                <FaSearch className="fs-6" /> Search</Button>
+            <div className="d-flex p-3 pb-0 justify-content-between align-items-center">
+              <img width="50px" src="./dice.png" className="myDice col-1 display-1 text-danger py-0 my-0" onClick={() => randomSearch(selectedTab, setTarget)} />
+              <input className="col-6 border border-maple-grey rounded py-1 px-2" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
+              <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap justify-content-center a align-items-center column-gap-1 searchBtn" variant="warning">
+                <FaSearch className="fs-6" /> SEARCH </Button>
             </div>
 
             {/* display Result of Mob List */}
@@ -70,17 +70,16 @@ function SearchBox() {
             </div>
 
           </Tab>
-          <Tab eventKey="Item" title="Item" className="bg-light mx-1">
+          <Tab eventKey="ITEM" title="ITEM" className="bg-light  border-bottom border-2 border-maple-border-1">
             {/* Search Select, input Bar */}
-            <div className="d-flex px-3 justify-content-between align-items-center">
-              <GiDiceTarget className="col-1 display-1 text-danger" onClick={() => randomSearch(selectedTab, setTarget)} />
-              <input className="col-6 border rounded py-1" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
-              <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap justify-content-center a align-items-center column-gap-1" variant="warning">
-                <FaSearch className="fs-6" /> Search</Button>
+            <div className="d-flex p-3 pb-0 justify-content-between align-items-center">
+              <img width="50px" src="./dice.png" className="myDice col-1 display-1 text-danger py-0 my-0" onClick={() => randomSearch(selectedTab, setTarget)} />
+              <input className="col-6 border border-maple-grey rounded py-1 px-2" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
+              <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap justify-content-center a align-items-center column-gap-1 searchBtn" variant="warning">
+                <FaSearch className="fs-6" /> SEARCH </Button>
             </div>
 
-
-            {/* display Result of Mob List */}
+            {/* display Result of Item List */}
             <p className="m-0 p-0 text-end">{`found ${displayList.length} record${displayList.length <= 1 ? '' : 's'}`}</p>
             <div className="">
               {displayList.slice(cardStartIndex, cardEndIndex).map(x => <MiniCard key={x.id} data={x} />)}
@@ -90,7 +89,7 @@ function SearchBox() {
       </div>
 
       {/* Pagination */}
-      <Pagination className="m-2 justify-content-end">
+      <Pagination className="m-2 justify-content-end" >
         <Pagination.Prev onClick={() => handlePaginationClick('prev')} disabled={pageNum === 1} />
         <Pagination.Next onClick={() => handlePaginationClick('next')} disabled={reachedLastPage} />
       </Pagination>

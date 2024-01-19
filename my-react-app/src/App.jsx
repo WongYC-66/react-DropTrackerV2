@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // 
-
+import MyContainer from './Container/myContainer.jsx';
 import Header from './Header/Header.jsx'
 import SearchBox from './SearchBox/SearchBox.jsx'
 import TargetBox from './TargetBox/TargetBox.jsx'
@@ -37,22 +37,20 @@ function App() {
   }, []);
 
   return (
-    // <div id="container" className='grid-container'>
     <TargetContext.Provider value={{ target, setTarget }}>
       <SearchResultContext.Provider value={{ searchResult, setSearchResult }}>
         <Container fluid className='mt-5 '>
           <Row className='justify-content-center'>
-            <Col sm={4} className='m-1 bg-primary p-0 rounded'>   <SearchBox />    </Col>
-            <Col sm={4} className='m-1 bg-primary p-0 rounded'>  <Header /> </Col>
+            <Col sm={4} className='m-1 bg-maple-bg-1 p-0 rounded'>   <MyContainer content={<SearchBox />} />   </Col>
+            <Col sm={4} className='m-1 p-0'>   <MyContainer content={<Header />} />   </Col>
           </Row>
           <Row className='justify-content-center'>
-            {hasTarget && <TargetBox />} 
-            <Col sm={8} className='m-1 bg-primary p-0 rounded'>   {hasSearchResult && <ResultBox />}   </Col>
+            {hasTarget && <TargetBox />}
+            <Col sm={8} className='m-1 bg-primary p-0 rounded'>   {hasSearchResult && <MyContainer content={<ResultBox />} />}   </Col>
           </Row>
         </Container>
       </SearchResultContext.Provider>
     </TargetContext.Provider>
-    // {/* </div> */ }
   )
 }
 

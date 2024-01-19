@@ -7,7 +7,7 @@
     --orange1: #c37328;
     --orange2: #f8a95e;
     --pink1: #ef6384;
-    --grey1: #b2b2b2;
+    --grey1: #B3B3B3;
     --grey2: #e6e6e6;
 }
 
@@ -31,30 +31,39 @@ div[role="tabpanel"]{
     color: var(--white2) !important;
     border: 2.5px solid black !important;
     border-bottom: none !important;
+    margin: 0 1px !important;
 }
 
 .nav-link.active {
     background-color: var(--pink1) !important;
-    transform: scale(1.1);
-    transform: translateY(-1px);
+    transform: scale(1.1) translateY(-1px);
 }
 
 
-svg:hover {
+img.myDice:hover {
     color: var(--pink1);
-    animation: zoom_rotation 2s ease-in-out infinite;
+    animation: zoom_rotation 1s ease-in-out infinite;
 }
 
 @keyframes zoom_rotation {
     0% {
-        transform: rotate(0deg) scale(1.5);
+        transform: scale(1.5) rotate(0deg);
     }
 
     50% {
-        transform: rotate(180deg) scale(2.0);
+        transform: scale(1.5) rotate(1080deg);
     }
 
     100% {
-        transform: rotate(360deg) scale(1.5);
+        transform: scale(1.5) rotate(0deg);
     }
+}
+
+input::placeholder {
+    padding-left: 5px;
+}
+
+button.searchBtn {
+    background: linear-gradient(var(--orange2), var(--orange1), var(--orange2)) !important;
+    border: 1.5px solid black;
 }

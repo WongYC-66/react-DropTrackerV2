@@ -1,0 +1,67 @@
+// https://getbootstrap.com/docs/5.3/customize/sass/#maps-and-loops
+
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+
+// 4. Include any default map overrides here
+
+// Create your own map
+$custom-colors: (
+  "maple-border-1": #557799,
+  "maple-border-2": #000000A3,
+  "maple-bg-1": #99BBCC,
+  "maple-bg-2": #56789B,
+  "maple-pink": #E75D7E,
+  "maple-grey": #B3B3B3,
+  "maple-orange-1": #F7AF61,
+  "maple-orange-2": #C06D23,
+  "maple-blue-1": #268CCB,
+  "maple-blue-2": #60BDF3,
+
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+
+// 5. Include remainder of required parts
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/helpers";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "../../node_modules/bootstrap/scss/utilities/api";
+
+// 8. Add additional custom code here
+
+
+// :root {
+//     --blue1: #8EAFC0;
+//     --blue2: #526C80;
+//     --blue3: #718b9b;
+//     --white1: #F2F0E9;
+//     --white2: #FFFFFF;
+//     --orange1: #c37328;
+//     --orange2: #f8a95e;
+//     --pink1: #ef6384;
+//     --grey1: #b2b2b2;
+//     --grey2: #e6e6e6;
+// }

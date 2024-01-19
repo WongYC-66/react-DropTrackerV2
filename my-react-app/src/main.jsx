@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-// import './index.css'
 
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./scss/custom.css" // my customized CSS with maple theme
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
