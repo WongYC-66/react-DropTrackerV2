@@ -11,27 +11,12 @@
     --grey2: #e6e6e6;
 }
 
-div.tab-content {
-    border-top: 3px solid var(--pink1);
-}
-
-ul.nav-tabs {
-    margin-top: 1rem !important;
-    margin-bottom: 0 !important;
-    border-bottom: 0;
-}
-
-/* div.tab-content,
-div[role="tabpanel"]{
-    height: 100% !important;
-    flex-grow: 1;
-} */
 .nav-link {
     background-color: var(--grey1) !important;
     color: var(--white2) !important;
     border: 2.5px solid black !important;
     border-bottom: none !important;
-    margin: 0 1px !important;
+    /* margin: 0 1px !important; */
 }
 
 .nav-link.active {
@@ -65,5 +50,4 @@ input::placeholder {
 
 button.searchBtn {
     background: linear-gradient(var(--orange2), var(--orange1), var(--orange2)) !important;
-    border: 1.5px solid black;
 }

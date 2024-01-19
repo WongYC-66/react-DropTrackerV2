@@ -5,7 +5,6 @@ import Tabs from 'react-bootstrap/Tabs';
 import { TargetContext, SearchResultContext } from '../App.jsx';
 import MiniCard from "../MiniCard/MiniCard.jsx";
 import MobMapListCard from "../MobStatsCard/MobMapListCard.jsx";
-import "./ResultBox.css";
 
 function ResultBox() {
   const [selectedTab, setSelectedTab] = useState('DROPS')
@@ -20,41 +19,43 @@ function ResultBox() {
 
   return (
     <>
-      {hasResult && <div id="resultBox">
-        <h2 className='h5 m-2 ps-2 bg-light rounded'>{target.name}</h2>
-        <hr></hr>
+      {hasResult &&
+        <div>
+          <h2 className='h5 bg-light m-2 p-2 border border-2 border-maple-border-1 rounded-2'>{target.name}</h2>
+          {/* Result of mob search */}
+          <div className='m-0 p-0 border-top border-2 border-maple-border-1'></div>
 
-        {/* Result of mob search */}
-        {isItemList && < Tabs
-          id="controlled-tab"
-          activeKey={selectedTab}
-          onSelect={value => setSelectedTab(value)}
-          className="m-3 me-5 flex-grow-1 rounded">
+          {isItemList && < Tabs
+            id="controlled-tab"
+            activeKey={selectedTab}
+            onSelect={value => setSelectedTab(value)}
+            className="ms-4 mt-3 me-5 border-bottom-0 column-gap-1">
 
-          <Tab eventKey="DROPS" title="DROPS" className="bg-light mb-1 mx-1 rounded border border-2">
-            {/* display Result of Mob Drops List */}
-            {searchResult.dropTable.map(x => <MiniCard key={x.id} data={x} />)}
-          </Tab>
+            <Tab eventKey="DROPS" title="DROPS" className="bg-light mx-1 border border-3 border-maple-pink rounded">
+              {/* display Result of Mob Drops List */}
+              {searchResult.dropTable.map(x => <MiniCard key={x.id} data={x} />)}
+            </Tab>
 
-          <Tab eventKey="LOCATIONS" title="LOCATIONS" className="bg-light mb-1 mx-1 rounded border border-2">
-            {/* display Result of Mob Location List */}
-            {isMob && <MobMapListCard data={target} />}
-          </Tab>
-        </Tabs>}
+            <Tab eventKey="LOCATIONS" title="LOCATIONS" className="bg-light mx-1 border border-3 border-maple-pink rounded">
+              {/* display Result of Mob Location List */}
+              {isMob && <MobMapListCard data={target} />}
+            </Tab>
+          </Tabs>}
 
-        {/* Result of item search */}
-        {isMobList && < Tabs
-          id="controlled-tab2"
-          activeKey="DROPPED BY"
-          className="m-3 me-5 flex-grow-1 rounded">
+          {/* Result of item search */}
+          {isMobList && < Tabs
+            id="controlled-tab2"
+            activeKey="DROPPED BY"
+            className="ms-4 mt-3 me-5 border-bottom-0 column-gap-1">
 
-          <Tab eventKey="DROPPED BY" title="DROPPED BY" className="bg-light mb-1 mx-1 rounded border border-2">
-            {/* display Result of Item dropped by List */}
-            {searchResult.dropTable.map(x => <MiniCard key={x.id} data={x} />)}
-          </Tab>
-        </Tabs>}
+            <Tab eventKey="DROPPED BY" title="DROPPED BY" className="bg-light mx-1 border border-3 border-maple-pink rounded">
+              {/* display Result of Item dropped by List */}
+              {searchResult.dropTable.map(x => <MiniCard key={x.id} data={x} />)}
+            </Tab>
+          </Tabs>}
 
-      </div>}
+        </div>
+      }
     </>
   )
 }

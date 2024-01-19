@@ -33,9 +33,9 @@ function TargetBox() {
   return (
     <div className="p-0 m-0">
       {isMob && <>
-        <Card className='bg-light border-0 p-1 m-0'>
+        <Card className='bg-light border-0 p-0 m-0'>
           <Card.Img variant="top" src={imgLink} alt="no image found" className='d-block w-50 mw-50 mx-auto my-1' />
-          <Card.Body>
+          <Card.Body className='p-0'>
             <Card.Title className='display-3 fs-2 fw-medium p-0 text-center'>{target.name}</Card.Title>
             <MobStatsCard data={target} />
           </Card.Body>
@@ -45,7 +45,7 @@ function TargetBox() {
       {!isItem ? <></>
         : isEquip ? <EqpUI data={target} />
           : <>
-            <Card className='bg-light border-0 p-3 m-0'>
+            <Card className='bg-light border-0 p-2 m-0'>
               <Card.Img variant="top" src={imgLink} alt="no image found" className='w-25 mx-auto my-1' />
               <Card.Body>
                 <Card.Title className='display-4 fs-3 fw-medium p-0 text-center'>{target.name}</Card.Title>

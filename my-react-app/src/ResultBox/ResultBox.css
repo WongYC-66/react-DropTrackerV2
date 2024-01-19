@@ -1,7 +1,0 @@
-#resultBox div.tab-content {
-    border-top: 0;
-}
-
-#resultBox div[role=tabpanel]{
-    border: 2px solid var(--pink1) !important;
-}

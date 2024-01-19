@@ -1,4 +1,3 @@
-import { GiDiceTarget } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState, useContext } from "react";
 import Tab from 'react-bootstrap/Tab';
@@ -24,8 +23,6 @@ function SearchBox() {
   const reachedLastPage = pageNum === Math.min(pageNum + 1, Math.ceil(displayList.length / CARDS_PER_PAGE))
 
   useEffect(() => {
-    // let data = 
-    // if(!data) return
     let a = (selectedTab === "MOB") ? filterMob(input)
       : (selectedTab === "ITEM") ? filterItem(input)
         : alert('error')
@@ -52,35 +49,35 @@ function SearchBox() {
           id="controlled-tab"
           activeKey={selectedTab}
           onSelect={value => setSelectedTab(value)}
-          className="m-3 me-5"
+          className="ms-3 mt-3 me-5 border-bottom-0 column-gap-1"
         >
-          <Tab eventKey="MOB" title="MOB" className="bg-light border-bottom border-2 border-maple-border-1">
+          <Tab eventKey="MOB" title="MOB" className="bg-light border-top border-3 border-maple-pink">
             {/* Search Select, input Bar */}
             <div className="d-flex p-3 pb-0 justify-content-between align-items-center">
               <img width="50px" src="./dice.png" className="myDice col-1 display-1 text-danger py-0 my-0" onClick={() => randomSearch(selectedTab, setTarget)} />
               <input className="col-6 border border-maple-grey rounded py-1 px-2" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
-              <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap justify-content-center a align-items-center column-gap-1 searchBtn" variant="warning">
+              <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap border-1 border-maple-border-2 justify-content-center a align-items-center column-gap-1 searchBtn" variant="warning">
                 <FaSearch className="fs-6" /> SEARCH </Button>
             </div>
 
             {/* display Result of Mob List */}
-            <p className="m-0 p-0 text-end">{`found ${displayList.length} record${displayList.length <= 1 ? '' : 's'}`}</p>
+            <p className="m-0 me-2 p-0 text-end">{`found ${displayList.length} record${displayList.length <= 1 ? '' : 's'}`}</p>
             <div className="">
               {displayList.slice(cardStartIndex, cardEndIndex).map(x => <MiniCard key={x.id} data={x} />)}
             </div>
 
           </Tab>
-          <Tab eventKey="ITEM" title="ITEM" className="bg-light  border-bottom border-2 border-maple-border-1">
+          <Tab eventKey="ITEM" title="ITEM" className="bg-light border-top border-3 border-maple-pink">
             {/* Search Select, input Bar */}
             <div className="d-flex p-3 pb-0 justify-content-between align-items-center">
               <img width="50px" src="./dice.png" className="myDice col-1 display-1 text-danger py-0 my-0" onClick={() => randomSearch(selectedTab, setTarget)} />
               <input className="col-6 border border-maple-grey rounded py-1 px-2" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." />
-              <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap justify-content-center a align-items-center column-gap-1 searchBtn" variant="warning">
+              <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap border-1 border-maple-border-2 justify-content-center a align-items-center column-gap-1 searchBtn" variant="warning">
                 <FaSearch className="fs-6" /> SEARCH </Button>
             </div>
 
             {/* display Result of Item List */}
-            <p className="m-0 p-0 text-end">{`found ${displayList.length} record${displayList.length <= 1 ? '' : 's'}`}</p>
+            <p className="m-0 me-2  p-0 text-end">{`found ${displayList.length} record${displayList.length <= 1 ? '' : 's'}`}</p>
             <div className="">
               {displayList.slice(cardStartIndex, cardEndIndex).map(x => <MiniCard key={x.id} data={x} />)}
             </div>
@@ -149,18 +146,17 @@ function filterItem(input) {
 
 
 function randomSearch(selectedTab, setTarget) {
-  console.log('doing random search')
+  // console.log('doing random search')
   const data = JSON.parse(localStorage.getItem("data"));
   if (!data) return
-
-  if (selectedTab === 'Mob') {
+  if (selectedTab === 'MOB') {
     const randomId = [...Object.keys(data.data_MB)].sort(() => Math.random() - 0.5).pop()
     setTarget({
       id: randomId,
       name: data.data_Mob[randomId],
       type: 'mob',
     })
-  } else if (selectedTab === 'Item') {
+  } else if (selectedTab === 'ITEM') {
     const dropItemSet = new Set()
     Object.values(data.data_MB).forEach(x => { x.forEach(y => dropItemSet.add(y)) })
     const randomId = [...dropItemSet].sort(() => Math.random() - 0.5).pop()

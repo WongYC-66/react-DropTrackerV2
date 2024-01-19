@@ -93,41 +93,41 @@ function EqpUI({ location = "", data }) {
             {!isEquip ? <></> :
                 isLoading ? <span className={styles.loader}></span> :
                     eqpData.overallCategory !== "EQUIP" ? <span>no info</span> :
-                        <Container sm={12} className='fs-6 fw-lighter'>
+                        <Container sm={12} className='fs-6 fw-lighter lh-sm p-1'>
                             <Row>
                                 <Col className='h6'>{eqpData.name} </Col>
                             </Row>
                             <Row>
                                 {/* Eqp Image and Requirements */}
-                                <Col xs={3}><img  className='d-block m-2 m-auto mh-50 mw-50' src={itemIdToImgUrl(data.id)} alt="No image found"></img></Col>
-                                <Col className='lh-sm ms-2 p-0'>
+                                <Col><img className='d-block m-2 m-auto mh-50 mw-50' src={itemIdToImgUrl(data.id)} alt="No image found"></img></Col>
+                                <Col xs={8} className='ms-2 p-0'>
                                     <Row>
-                                        <Col xs={6}>REQ LEV</Col>
+                                        <Col>REQ LEV</Col>
                                         <Col xs={1}>:</Col>
                                         <Col xs={3}>{eqpData.reqLevel}</Col>
                                     </Row>
                                     <Row>
-                                        <Col xs={6}>REQ STR</Col>
+                                        <Col>REQ STR</Col>
                                         <Col xs={1}>:</Col>
                                         <Col xs={3}>{eqpData.reqSTR}</Col>
                                     </Row>
                                     <Row>
-                                        <Col xs={6}>REQ DEX</Col>
+                                        <Col>REQ DEX</Col>
                                         <Col xs={1}>:</Col>
                                         <Col xs={3}>{eqpData.reqDEX}</Col>
                                     </Row>
                                     <Row>
-                                        <Col xs={6}>REQ INT</Col>
+                                        <Col>REQ INT</Col>
                                         <Col xs={1}>:</Col>
                                         <Col xs={3}>{eqpData.reqINT}</Col>
                                     </Row>
                                     <Row>
-                                        <Col xs={6}>REQ LUK</Col>
+                                        <Col>REQ LUK</Col>
                                         <Col xs={1}>:</Col>
                                         <Col xs={3}>{eqpData.reqLUK}</Col>
                                     </Row>
                                     <Row>
-                                        <Col xs={6}>REQ FAME</Col>
+                                        <Col>REQ FAME</Col>
                                         <Col xs={1}>:</Col>
                                         <Col xs={3}> {eqpData.reqFAME}</Col>
                                     </Row>
@@ -139,169 +139,131 @@ function EqpUI({ location = "", data }) {
                             </Row>
                             <Row>
                                 {/* horizontal line */}
-                                <Col><hr className='border border-2 border-warning'></hr></Col>
+
+                                <Col><div className='my-1 p-0 border-top border-2 border-maple-orange-3'></div></Col>
                             </Row>
                             <Row>
                                 {/* stats */}
                                 <Row>
-                                    <Col xs={5}><BsDot />CATEGORY</Col>
-                                    <Col xs={1}>:</Col>
-                                    <Col xs={4}>{eqpData.subCategory}</Col>
+                                    <Col className='pe-0'><BsDot />CATEGORY</Col>
+                                    <Col xs={1} className='p-0'>:</Col>
+                                    <Col xs={3} md={4} lg={5} className='p-0 m-0'>{eqpData.subCategory}</Col>
                                 </Row>
 
                                 {!!eqpData.attackSpeed &&
                                     <Row>
-                                        <Col xs={5}><BsDot />ATTACK SPEED</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4}>{attkSpeedToText(eqpData.attackSpeed)} ({eqpData.attackSpeed})</Col>
+                                        <Col className='pe-0'><BsDot />ATTACK SPEED</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0'>{attkSpeedToText(eqpData.attackSpeed)} ({eqpData.attackSpeed})</Col>
                                     </Row>}
 
                                 {!!eqpData.incSTR &&
                                     <Row>
-                                        <Col xs={5}><BsDot />STR</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'> +{rangeCalculator(eqpData.incSTR, "")}</Col>
+                                        <Col className='pe-0'><BsDot />STR</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'> +{rangeCalculator(eqpData.incSTR, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incDEX &&
                                     <Row>
-                                        <Col xs={5}><BsDot />DEX</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incDEX, "")}</Col>
+                                        <Col className='pe-0'><BsDot />DEX</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incDEX, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incINT &&
                                     <Row>
-                                        <Col xs={5}><BsDot />INT</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incINT, "")}</Col>
+                                        <Col className='pe-0'><BsDot />INT</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incINT, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incLUK &&
                                     <Row>
-                                        <Col xs={5}><BsDot />LUK</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incLUK, "")}</Col>
+                                        <Col className='pe-0'><BsDot />LUK</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incLUK, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incHP &&
                                     <Row>
-                                        <Col xs={5}><BsDot />HP</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incHP, "", 10)}</Col>
+                                        <Col className='pe-0'><BsDot />HP</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incHP, "", 10)}</Col>
                                     </Row>}
 
                                 {!!eqpData.incMP &&
                                     <Row>
-                                        <Col xs={5}><BsDot />MP</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incMP, "", 10)}</Col>
+                                        <Col className='pe-0'><BsDot />MP</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incMP, "", 10)}</Col>
                                     </Row>}
 
                                 {!!eqpData.incWATT &&
                                     <Row>
-                                        <Col xs={5}><BsDot />WEAPON ATTACK</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incWATT, "showGodly")}</Col>
+                                        <Col className='pe-0'><BsDot />WEAPON ATTACK</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incWATT, "showGodly")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incMATT &&
                                     <Row>
-                                        <Col xs={5}><BsDot />MAGIC ATTACK</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incMATT, "showGodly")}</Col>
+                                        <Col className='pe-0'><BsDot />MAGIC ATTACK</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incMATT, "showGodly")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incWDEF &&
                                     <Row>
-                                        <Col xs={5}><BsDot />WEAPON DEF</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incWDEF, "", 10)}</Col>
+                                        <Col className='pe-0'><BsDot />WEAPON DEF</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incWDEF, "", 10)}</Col>
                                     </Row>}
 
                                 {!!eqpData.incMDEF &&
                                     <Row>
-                                        <Col xs={5}><BsDot />MAGIC DEF</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incMDEF, "", 10)}</Col>
+                                        <Col className='pe-0'><BsDot />MAGIC DEF</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incMDEF, "", 10)}</Col>
                                     </Row>}
 
                                 {!!eqpData.incAcc &&
                                     <Row>
-                                        <Col xs={5}><BsDot />ACCURACY</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incACC, "")}</Col>
+                                        <Col className='pe-0'><BsDot />ACCURACY</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incACC, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incEVA &&
                                     <Row>
-                                        <Col xs={5}><BsDot />AVOIDABILITY</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incEVA, "")}</Col>
+                                        <Col className='pe-0'><BsDot />AVOIDABILITY</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incEVA, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incSpeed &&
                                     <Row>
-                                        <Col xs={5}><BsDot />SPEED</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incSpeed, "")}</Col>
+                                        <Col className='pe-0'><BsDot />SPEED</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incSpeed, "")}</Col>
                                     </Row>}
 
                                 {!!eqpData.incJUMP &&
                                     <Row>
-                                        <Col xs={5}><BsDot />JUMP</Col>
-                                        <Col xs={1}>:</Col>
-                                        <Col xs={4} className='fw-bold'>+{rangeCalculator(eqpData.incJUMP, "")}</Col>
+                                        <Col className='pe-0'><BsDot />JUMP</Col>
+                                        <Col xs={1} className='p-0'>:</Col>
+                                        <Col xs={3} md={4} lg={5} className='p-0 fw-bold'>+{rangeCalculator(eqpData.incJUMP, "")}</Col>
                                     </Row>}
 
                                 <Row>
-                                    <Col xs={5}><BsDot />NUMBER OF UPGRADES AVAILABLE</Col>
-                                    <Col xs={1}>:</Col>
-                                    <Col xs={4} className='fw-bold'>{eqpData.slot}</Col>
+                                    <Col className='pe-0'><BsDot />NUMBER OF UPGRADES AVAILABLE</Col>
+                                    <Col xs={1} className='p-0'>:</Col>
+                                    <Col xs={3} className='p-0 fw-bold'>{eqpData.slot}</Col>
                                 </Row>
 
                             </Row>
                         </Container>
 
-                // <div className={``}>
-                //     <h3>{eqpData.name}</h3>
-                //     <div className={styles.imgNReq}>
-                //         <div className={styles.col_1}><img src={itemIdToImgUrl(data.id)} alt="No image found"></img></div>
-                //         <div className={styles.col_2}>
-                //             <p>REQ LEV : {eqpData.reqLevel}</p>
-                //             <p>REQ STR : {eqpData.reqSTR}</p>
-                //             <p>REQ DEX : {eqpData.reqDEX}</p>
-                //             <p>REQ INT : {eqpData.reqINT}</p>
-                //             <p>REQ LUK : {eqpData.reqLUK}</p>
-                //             <p>REQ FAM : {eqpData.reqFAME || '-'}</p>
-                //         </div>
-                //     </div>
-                //     <div className={styles.jobReq}>
-                //         {jobReqToHtmlElem(eqpData.reqJob)}
-                //     </div>
-                //     <li>CATEGORY: {eqpData.subCategory}</li>
-                //     {!!eqpData.attackSpeed && <li>ATTACK SPEED: {attkSpeedToText(eqpData.attackSpeed)} ({eqpData.attackSpeed})</li>}
-                //     {!!eqpData.incSTR && <li>STR: <b>+{rangeCalculator(eqpData.incSTR, "")}</b></li>}
-                //     {!!eqpData.incDEX && <li>DEX: <b>+{rangeCalculator(eqpData.incDEX, "")}</b></li>}
-                //     {!!eqpData.incINT && <li>INT: <b>+{rangeCalculator(eqpData.incINT, "")}</b></li>}
-                //     {!!eqpData.incLUK && <li>LUK: <b>+{rangeCalculator(eqpData.incLUK, "")}</b></li>}
-
-                //     {!!eqpData.incHP && <li>HP: <b>+{rangeCalculator(eqpData.incHP, "", 10)}</b></li>}
-                //     {!!eqpData.incMP && <li>MP: <b>+{rangeCalculator(eqpData.incMP, "", 10)}</b></li>}
-                //     {!!eqpData.incWATT && <li>WEAPON ATTACK: <b>{rangeCalculator(eqpData.incWATT, "showGodly")}</b></li>}
-                //     {!!eqpData.incMATT && <li>MAGIC ATTACK: <b>{rangeCalculator(eqpData.incMATT, "showGodly")}</b></li>}
-
-                //     {!!eqpData.incWDEF && <li>WEAPON DEF: <b>{rangeCalculator(eqpData.incWDEF, "", 10)}</b></li>}
-                //     {!!eqpData.incMDEF && <li>MAGIC DEF: <b>{rangeCalculator(eqpData.incMDEF, "", 10)}</b></li>}
-
-                //     {!!eqpData.incACC && <li>ACCURACY: <b>{rangeCalculator(eqpData.incACC, "")}</b></li>}
-                //     {!!eqpData.incEVA && <li>AVOIDABILITY: <b>{rangeCalculator(eqpData.incEVA, "")}</b></li>}
-                //     {!!eqpData.incSpeed && <li>SPEED: {rangeCalculator(eqpData.incSpeed, "")}</li>}
-                //     {!!eqpData.incJUMP && <li>JUMP: {rangeCalculator(eqpData.incJUMP, "")}</li>}
-
-                //     <li>NUMBER OF UPGRADES AVAILABLE : <b>{eqpData.slot}</b></li>
-
-                // </div>
             }
         </>
     )
@@ -323,7 +285,7 @@ function jobReqToHtmlElem(x) {
     }
 
     x = lib[x] || [16]
-    console.log(`${x} after lib`)
+    // console.log(`${x} after lib`)
 
     return (<>
         {
@@ -355,8 +317,10 @@ function rangeCalculator(x, type = "", hardCap = 5) {
 
     let returnString = ""
     type === "showGodly" ?
-        returnString = (`${min} ~ ${max} or ${maxWithGodlyBonus} (godly)`) :
-        returnString = (`${min} ~ ${max} or ${maxWithGodlyBonus}`)
+        // returnString = (`${min} ~ ${max} or ${maxWithGodlyBonus} (godly)`) :
+        // returnString = (`${min} ~ ${max} or ${maxWithGodlyBonus}`)
+        returnString = (`${min} ~ ${maxWithGodlyBonus}`) :
+        returnString = (`${min} ~ ${maxWithGodlyBonus}`)
     return returnString
 }
 
