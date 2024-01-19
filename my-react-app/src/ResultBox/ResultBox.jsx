@@ -20,7 +20,7 @@ function ResultBox() {
   return (
     <>
       {hasResult &&
-        <div>
+        <div className='pb-1'>
           <h2 className='h5 bg-light m-2 p-2 border border-2 border-maple-border-1 rounded-2'>{target.name}</h2>
           {/* Result of mob search */}
           <div className='m-0 p-0 border-top border-2 border-maple-border-1'></div>
