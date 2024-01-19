@@ -13,7 +13,7 @@ function MiniCard({ data }) {
     const isTarget = data.id === target.id
 
     return (
-        <div className={`d-flex align-items-center mx-3 rounded ${isTarget && "bg-secondary"}`} onClick={() => setTarget(data)}>
+        <div className={`d-flex align-items-center mx-3 rounded ${isTarget && "bg-maple-bg-2"}`} onClick={() => setTarget(data)}>
             {data.type === 'mob' && <img className={`col-3 pe-1 mx-3 ${styles.img}`} src={mobIdToImgUrl(data.id)} alt="no image found" />}
             {data.type === 'mob' && <MobStatsCardMini data={data} isTarget={isTarget}/>}
             

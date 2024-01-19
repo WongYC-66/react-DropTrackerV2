@@ -49,10 +49,11 @@ function MobStatsCardMini({ data, isTarget }) {
 
     return (
         <>
-            <Card className={`border-0 my-2 ${isTarget && `bg-secondary text-light `}`}>
+            <Card className={`border-0 my-2 lh-sm" ${isTarget && `bg-maple-bg-2 text-light `}`}>
                 <Card.Body className="p-0">
                     <Card.Title className="h5 m-0 p-0">{data.name}</Card.Title>
-                    <Card.Text className="d-flex m-0 p-0 fs-xsm fw-lightjustify-content-start">
+                    <Card.Text className="d-flex m-0 p-0 fs-xsm fw-lightjustify-content-start text-nowrap overflow-hidden">
+                        {isLoading && ` loading data ... ...`}
                         {!isLoading && `${itemData.overallCategory} / ${itemData.category} - ${itemData.subCategory}`}
                     </Card.Text>
                 </Card.Body>
