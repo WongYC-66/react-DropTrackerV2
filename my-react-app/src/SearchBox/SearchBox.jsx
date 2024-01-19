@@ -46,7 +46,7 @@ function SearchBox() {
     <div className="d-flex flex-column m-0 p-0 h-100 rounded">
       <div className="flex-grow-1 bg-light p-0 m-0 d-flex flex-column">
         <div className="bg-maple-bg-1 p-0 m-0">
-
+          
           <Tabs
             id="controlled-tab"
             activeKey={selectedTab}
@@ -67,8 +67,8 @@ function SearchBox() {
               <div className="">
                 {displayList.slice(cardStartIndex, cardEndIndex).map(x => <MiniCard key={x.id} data={x} />)}
               </div>
-
             </Tab>
+
             <Tab eventKey="ITEM" title="ITEM" className="bg-light border-top border-3 border-maple-pink">
               {/* Search Select, input Bar */}
               <div className="d-flex p-3 pb-0 justify-content-between align-items-center">
@@ -83,8 +83,12 @@ function SearchBox() {
               <div className="">
                 {displayList.slice(cardStartIndex, cardEndIndex).map(x => <MiniCard key={x.id} data={x} />)}
               </div>
+              
             </Tab>
+
           </Tabs>
+
+          <NoResultMushroom displayList={displayList} input={input}/>
         </div>
       </div>
 
@@ -170,6 +174,17 @@ function randomSearch(selectedTab, setTarget) {
       type: 'item',
     })
   }
+}
+
+function NoResultMushroom({ displayList, input }) {
+  return (<>
+    {displayList.length <= 0 &&
+      <div className="p-5 m-0 bg-light d-flex flex-column justify-content-center align-items-center h-100">
+        <img className="d-block" src="./cryMushroom.png"></img>
+        <div className="display-3 fs-5 text-break mw-100">No result found for "{input}"</div>
+      </div>}
+
+  </>)
 }
 
 export default SearchBox
