@@ -8,6 +8,7 @@ import Header from './Header/Header.jsx'
 import SearchBox from './SearchBox/SearchBox.jsx'
 import TargetBox from './TargetBox/TargetBox.jsx'
 import ResultBox from './ResultBox/ResultBox.jsx'
+import ControlPanel from './ControlPanel/ControlPanel.jsx'
 // 
 import data_MB from '../data/data_MB.json'
 import data_Mob from '../data/data_Mob.json'
@@ -41,6 +42,7 @@ function App() {
   return (
     <TargetContext.Provider value={{ target, setTarget }}>
       <SearchResultContext.Provider value={{ searchResult, setSearchResult }}>
+        <ControlPanel />
         <Container fluid className='mt-5 '>
           <Row className='justify-content-center'>
             <Col sm={4} className='m-1 p-0'>   <MyContainer content={<SearchBox />} />   </Col>

@@ -57,7 +57,7 @@ function SearchBox() {
               {/* Search Select, input Bar */}
               <div className="d-flex p-3 pb-0 justify-content-between align-items-center">
                 <img width="50px" src="./dice.png" className="myDice col-1 display-1 text-danger py-0 my-0" onClick={() => randomSearch(selectedTab, setTarget)} />
-                <input className="col-6 border border-maple-grey rounded py-1 px-2" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." maxlength="30"/>
+                <input className="col-6 border border-maple-grey rounded py-1 px-2" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." maxLength="30"/>
                 <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap border-1 border-maple-border-2 justify-content-center a align-items-center column-gap-1 searchBtn" variant="warning">
                   <FaSearch className="fs-6" /> SEARCH </Button>
               </div>
@@ -73,7 +73,7 @@ function SearchBox() {
               {/* Search Select, input Bar */}
               <div className="d-flex p-3 pb-0 justify-content-between align-items-center">
                 <img width="50px" src="./dice.png" className="myDice col-1 display-1 text-danger py-0 my-0" onClick={() => randomSearch(selectedTab, setTarget)} />
-                <input className="col-6 border border-maple-grey rounded py-1 px-2" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." maxlength="30"/>
+                <input className="col-6 border border-maple-grey rounded py-1 px-2" value={input} onChange={e => setInput(e.target.value)} placeholder="search for..." maxLength="30"/>
                 <Button className="d-flex col-4 fs-6 py-1 p-1 m-0 text-light text-nowrap border-1 border-maple-border-2 justify-content-center a align-items-center column-gap-1 searchBtn" variant="warning">
                   <FaSearch className="fs-6" /> SEARCH </Button>
               </div>
