@@ -6,11 +6,9 @@ function ControlPanel() {
     return (
         <>
             <div className='buttonSetting'>
-                <a href="https://royals-droppy-v2-mobile.netlify.app/">
-                    <Button>
-                        <GrRevert />
-                    </Button>
-                </a>
+                <Button href="https://royals-droppy-v2-mobile.netlify.app/">
+                    <GrRevert />
+                </Button>
             </div>
         </>
     );
