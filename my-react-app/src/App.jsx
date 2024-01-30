@@ -4,6 +4,7 @@ import Header from './Header.jsx'
 import SearchBox from './SearchBox.jsx'
 import TargetBox from './TargetBox.jsx'
 import ResultBox from './ResultBox.jsx'
+import ControlPanel from './ControlPanel/ControlPanel.jsx'
 // 
 import data_MB from '../data/data_MB.json'
 import data_Mob from '../data/data_Mob.json'
@@ -38,6 +39,7 @@ function App() {
           <SearchBox />
           <TargetBox />
           <ResultBox />
+          <ControlPanel />
         </SearchResultContext.Provider>
       </TargetContext.Provider>
     </div>

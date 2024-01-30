@@ -5,7 +5,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Badge from 'react-bootstrap/Badge';
 import ReactAudioPlayer from 'react-audio-player';
 // 
-import { ColorThemeContext } from '../App.jsx'
+// import { ColorThemeContext } from '../App.jsx'
 import ColorToggler from './ColorToggler.jsx'
 // 
 import { IoMdSettings } from "react-icons/io";
@@ -19,7 +19,7 @@ import { TbCircleNumber3 } from "react-icons/tb"
 function ControlPanel() {
     const [show, setShow] = useState(false);
     const audioRef = useRef(null)
-    const { colorTheme, setColorTheme } = useContext(ColorThemeContext)
+    // const { colorTheme, setColorTheme } = useContext(ColorThemeContext)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -36,6 +36,7 @@ function ControlPanel() {
     const handleThemeChange = (value) => {
             //
         alert("color theme disabled. Author headache of this~")
+        return
             //
         switch (value) {
             case 2:
@@ -54,7 +55,7 @@ function ControlPanel() {
 
     return (
         <>
-            <ColorToggler colorTheme={colorTheme} />
+            {/* <ColorToggler colorTheme={colorTheme} /> */}
             <ReactAudioPlayer
                 src="/maple-bgm.mp3"
                 autoPlay
