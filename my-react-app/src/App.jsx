@@ -21,11 +21,13 @@ import data_Map from '../data/data_Map.json'
 
 export const TargetContext = createContext(null)
 export const SearchResultContext = createContext(null)
+export const ColorThemeContext = createContext(null)
 let data = {}
 
 function App() {
   const [target, setTarget] = useState({})
   const [searchResult, setSearchResult] = useState({})
+  const [colorTheme, setColorTheme] = useState("default")
 
   const hasTarget = Object.keys(target).length >= 1
   const hasSearchResult = Object.keys(target).length >= 1
@@ -40,21 +42,23 @@ function App() {
   // console.log(target)
 
   return (
-    <TargetContext.Provider value={{ target, setTarget }}>
-      <SearchResultContext.Provider value={{ searchResult, setSearchResult }}>
-        <ControlPanel />
-        <Container fluid className='mt-5 '>
-          <Row className='justify-content-center'>
-            <Col sm={4} className='m-1 p-0'>   <MyContainer content={<SearchBox />} />   </Col>
-            <Col sm={4} className='m-1 p-0'>   <MyContainer content={<Header />} />   </Col>
-          </Row>
-          <Row className='justify-content-center'>
-            {hasTarget && <TargetBox />}
-            <Col sm={8} className='m-1 p-0'>   {hasSearchResult && <MyContainer content={<ResultBox />} />}   </Col>
-          </Row>
-        </Container>
-      </SearchResultContext.Provider>
-    </TargetContext.Provider>
+    <ColorThemeContext.Provider value={{ colorTheme, setColorTheme }}>
+      <TargetContext.Provider value={{ target, setTarget }}>
+        <SearchResultContext.Provider value={{ searchResult, setSearchResult }}>
+            <Container fluid className='mt-5 '>
+              <Row className='justify-content-center'>
+                <Col sm={4} className='m-1 p-0'>   <MyContainer content={<SearchBox />} />   </Col>
+                <Col sm={4} className='m-1 p-0'>   <MyContainer content={<Header />} />   </Col>
+              </Row>
+              <Row className='justify-content-center'>
+                {hasTarget && <TargetBox />}
+                <Col sm={8} className='m-1 p-0'>   {hasSearchResult && <MyContainer content={<ResultBox />} />}   </Col>
+              </Row>
+            </Container>
+            <ControlPanel />
+        </SearchResultContext.Provider>
+      </TargetContext.Provider>
+    </ColorThemeContext.Provider>
   )
 }
 
