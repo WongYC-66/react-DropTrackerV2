@@ -102,7 +102,7 @@ function ControlPanel() {
                             <Badge pill bg="secondary" className='px-2'>Style</Badge>
                             <ButtonGroup className='w-75 ps-2 ms-1' >
                                 <Button variant="secondary" href="#">Mobile</Button>
-                                <Button variant="secondary" href="https://royals-droppy-v2.netlify.app/">PC</Button>
+                                <Button variant="secondary" href="https://royals-droppy-v2-pc.netlify.app/">PC</Button>
                             </ButtonGroup>
                         </div>
                     </div>
