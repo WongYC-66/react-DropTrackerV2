@@ -381,7 +381,6 @@ input:focus{
 
 .statsFlex{
   display: flex;
-  gap: 10px;
 }
 
 .mobElemBox{
