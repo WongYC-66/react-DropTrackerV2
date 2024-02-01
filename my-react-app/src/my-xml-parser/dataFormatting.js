@@ -204,6 +204,35 @@ export function GearStatsDataFormatting(objArr) {
     return simpleData
 }
 
+export function MobStatsDataFormatting(objArr) {
+    // for img.xml from Mob.Wz ONLY
+    // Create better data-structure
+    console.log("running MobStatsDataFormatting")
+    const simpleData = {}   // {id1 : {key1 : value1, key2: value2}, id2 : ..., id3 : ..., ...}
+    let x = objArr[0]
+    
+    objArr.forEach(x => {
+        x = x.root
+        const mobId = parseInt(x.attributes.name.split('.')[0]) 
+        // if(mobId != 8800002) return
+        console.log(`formatting : ${mobId}`)
+        const stats = {} 
+        // console.log(inspect(x, { colors: true, depth: Infinity }));
+        // 
+        const unwantedStats = ["skill", "default", "publicReward", "explosiveReward", "summonType", "fs", "hpTagColor", "hpTagBgcolor", "buff", "defaultHP", "defaultMP", "rareItemDropLevel", "category", "noFlip", "hpRecovery", "mpRecovery", "noFlip", "firstAttack", "noregen", "bodyAttack", "speed"]
+        x = x.children.find(y => y.attributes.name === "info") 
+        x.children.forEach(y => {
+            // console.log(y)
+            let key = y.attributes.name
+            let value = y.attributes.value
+            if(unwantedStats.some(z => key === z)) return // if property is one of unwantedStats, skip
+            stats[key] = value  // {key1 : value1, key2: value2}
+        })
+        simpleData[mobId] = stats // {id : {key1 : value1, key2: value2}}
+    })
+    return simpleData
+}
+
 // module.exports = {
 //     MBdataFormatting,
 //     MobIdDataFormatting,

@@ -16,7 +16,8 @@ import { MBdataFormatting,
     EqpItemIdDataFormatting,
     InsItemIdDataFormatting,
     MapIdDataFormatting,
-    GearStatsDataFormatting
+    GearStatsDataFormatting,
+    MobStatsDataFormatting,
 } from './dataFormatting.js';
 
 async function MB() {
@@ -73,16 +74,23 @@ async function GearStats() {
     diskWriter(path.join(__dirname, "../../data/", 'data_GearStats.json'), simpleData)
 }
 
+async function MobStats() {
+    const objArr = await parseXMLinBulk(path.join(__dirname, "../../data/Mob"), "Mob")
+    const simpleData = MobStatsDataFormatting(objArr)
+    diskWriter(path.join(__dirname, "../../data/", 'data_MobStats.json'), simpleData)
+}
+
 function main() {
-    MB()
-    MB_MapOnly()
-    Mob()
-    Consume()
-    Etc()
-    Eqp()
-    Ins()
-    Maps()
-    GearStats() // Read multiple IMG files in multiple folders
+    // MB()
+    // MB_MapOnly()
+    // Mob()
+    // Consume()
+    // Etc()
+    // Eqp()
+    // Ins()
+    // Maps()
+    // GearStats() // Read multiple IMG files in multiple folders
+    MobStats()
 }
 
 main()
