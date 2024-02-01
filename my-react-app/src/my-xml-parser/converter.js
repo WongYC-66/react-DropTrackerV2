@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const OUTPUT_LOCATION = "./data/"
 // var fs = require('node:fs');
-import { diskWriter, parseXML } from './utility.js';
+import { diskWriter, parseXML, parseXMLinBulk } from './utility.js';
 import { MBdataFormatting,
     MBdataFormatting_MapOnly,
     MobIdDataFormatting,
@@ -16,6 +16,7 @@ import { MBdataFormatting,
     EqpItemIdDataFormatting,
     InsItemIdDataFormatting,
     MapIdDataFormatting,
+    GearStatsDataFormatting
 } from './dataFormatting.js';
 
 async function MB() {
@@ -66,6 +67,12 @@ async function Maps() {
     diskWriter(path.join(__dirname, "../../data/", 'data_Map.json'), simpleData)
 }
 
+async function GearStats() {
+    const objArr = await parseXMLinBulk(path.join(__dirname, "../../data/Character"))
+    const simpleData = GearStatsDataFormatting(objArr)
+    diskWriter(path.join(__dirname, "../../data/", 'data_GearStats.json'), simpleData)
+}
+
 function main() {
     MB()
     MB_MapOnly()
@@ -75,6 +82,7 @@ function main() {
     Eqp()
     Ins()
     Maps()
+    GearStats() // Read multiple IMG files in multiple folders
 }
 
 main()

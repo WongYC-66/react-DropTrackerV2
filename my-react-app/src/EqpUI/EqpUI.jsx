@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { BsDot } from "react-icons/bs";
 // 
-import { itemIdToImgUrl, attkSpeedToText } from '../myUtility.js'
+import { itemIdToImgUrl, attkSpeedToText, itemIdToGearStats} from '../myUtility.js'
 import styles from './EqpUI.module.css'
 
 function EqpUI({ location = "", data }) {
@@ -20,66 +20,45 @@ function EqpUI({ location = "", data }) {
     useEffect(() => {
         if (!isEquip) return  // only fetch info data if is Eqp
 
-        const fetchEqpData = async () => {
-
-            const fetchParameter = [
-                ['GMS', 64],
-                ['EMS', 82],
-                ['GMS', 107],
-                ['SEA', 198]
-            ]
-            // fetch api for eqp data for at least 3 times if fail
-            for (let i = 0; i < fetchParameter.length; i++) {
-
-                let x = {};
-                try {
-                    x = await fetch(`https://maplestory.io/api/${fetchParameter[i][0]}/${fetchParameter[i][1]}/item/${data.id}`)
-                    x = await (x.json())
-                    // return setEqpData(x)
-                    let nextObj = {
-                        name: data.name,
-                        id: data.id,
-                        overallCategory: x.typeInfo.overallCategory.toUpperCase(),
-                        subCategory: x.typeInfo.subCategory.toUpperCase(),
-                        reqLevel: x.metaInfo.reqLevelEquip || 0,
-                        reqSTR: x.metaInfo.reqSTR || 0,
-                        reqDEX: x.metaInfo.reqDEX || 0,
-                        reqINT: x.metaInfo.reqINT || 0,
-                        reqLUK: x.metaInfo.reqLUK || 0,
-                        reqFAME: x.metaInfo.reqPOP || 0,
-                        reqJob: x.metaInfo.reqJob || 0,
-                        //
-                        slot: x.metaInfo.tuc || 0,
-                        attackSpeed: x.metaInfo.attackSpeed || 0,
-                        incWATT: x.metaInfo.incPAD || 0,
-                        incMATT: x.metaInfo.incMAD || 0,
-                        incACC: x.metaInfo.incACC || 0,
-                        incEVA: x.metaInfo.incEVA || 0,
-                        incSpeed: x.metaInfo.incSpeed || 0,
-                        incJUMP: x.metaInfo.incJUMP || 0,
-                        incWDEF: x.metaInfo.incPDD || 0,
-                        incMDEF: x.metaInfo.incMDD || 0,
-                        incHP: x.metaInfo.incMHP || 0,
-                        incMP: x.metaInfo.incMMP || 0,
-                        //
-                        incSTR: x.metaInfo.incSTR || 0,
-                        incDEX: x.metaInfo.incDEX || 0,
-                        incINT: x.metaInfo.incINT || 0,
-                        incLUK: x.metaInfo.incLUK || 0,
-                        //
-
-                    }
-                    // console.log(nextObj)
-                    setEqpData(nextObj)
-                    setIsLoading(false)
-                    return;  // no error then end.
-                } catch (err) {
-                    setEqpData({})
-                    continue // re-fetch if error
-                }
-
+        const fetchEqpData = () => {
+            let x = itemIdToGearStats(data.id)
+            // console.log(x)
+            let nextObj = {
+                name: data.name,
+                id: data.id,
+                overallCategory: x.overallCategory.toUpperCase(),
+                category: x.category.toUpperCase(),
+                subCategory: x.subCategory.toUpperCase(),
+                reqLevel: parseInt(x.reqLevel) || 0,
+                reqSTR: parseInt(x.reqSTR) || 0,
+                reqDEX: parseInt(x.reqDEX) || 0,
+                reqINT: parseInt(x.reqINT) || 0,
+                reqLUK: parseInt(x.reqLUK) || 0,
+                reqFAME: parseInt(x.reqPOP) || 0,
+                reqJob: parseInt(x.reqJob) || 0,
+                //
+                slot: parseInt(x.tuc) || 0,
+                attackSpeed: parseInt(x.attackSpeed) || 0,
+                incWATT: parseInt(x.incPAD) || 0,
+                incMATT: parseInt(x.incMAD) || 0,
+                incACC: parseInt(x.incACC) || 0,
+                incEVA: parseInt(x.incEVA) || 0,
+                incSpeed: parseInt(x.incSpeed) || 0,
+                incJUMP: parseInt(x.incJump) || 0,
+                incWDEF: parseInt(x.incPDD) || 0,
+                incMDEF: parseInt(x.incMDD) || 0,
+                incHP: parseInt(x.incMHP) || 0,
+                incMP: parseInt(x.incMMP) || 0,
+                //
+                incSTR: parseInt(x.incSTR) || 0,
+                incDEX: parseInt(x.incDEX) || 0,
+                incINT: parseInt(x.incINT) || 0,
+                incLUK: parseInt(x.incLUK) || 0,
+                //
             }
-            setIsLoading(false) // loading fail. done with fetch.
+            // console.log(nextObj)
+            setEqpData(nextObj)
+            if(x) setIsLoading(false)
         }
 
         fetchEqpData()
