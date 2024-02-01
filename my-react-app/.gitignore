@@ -25,3 +25,4 @@ dist-ssr
 
 data/Character/*.*
 data/Character/
+data/Mob/

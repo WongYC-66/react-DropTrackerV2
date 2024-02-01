@@ -45,19 +45,21 @@ function TargetBox() {
   return (
     <div className="targetBox grid-item item-c">
       {isMob && <>
-        <div className='top'>
-          <h1>{target.name}</h1>
-          <img src={imgLink} alt="no image found" onClick={handleMobImgClick}></img>
-          {true && <MobStatsCard data={target} />}
+        <div className='shell'>
+          <div className='top'>
+            <h1>{target.name}</h1>
+            <img src={imgLink} alt="no image found" onClick={handleMobImgClick}></img>
+            {true && <MobStatsCard data={target} showMobDetail={showMobDetail} />}
+          </div>
+
+          {showMobDetail && <div className='mapList'>
+            {mobMapList.map((x, i) => <a href={"https://bbb.hidden-street.net/map/mini-map/" + x.toLowerCase().replaceAll(/ :? */g, '-')}
+              key={i}
+              target="_blank"
+              dangerouslySetInnerHTML={{ __html: x }}></a>)}
+          </div>}
         </div>
-        
-        {showMobDetail && <div className='mapList'>
-          {mobMapList.map((x, i) => <a href={"https://bbb.hidden-street.net/map/mini-map/" + x.toLowerCase().replaceAll(/ :? */g, '-')}
-            key={i}
-            target="_blank"
-            dangerouslySetInnerHTML={{ __html: x }}></a>)}
-        </div>}
-        
+
 
       </>}
       {!isItem ? <></>

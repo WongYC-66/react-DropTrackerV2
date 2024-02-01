@@ -216,4 +216,25 @@ export function itemIdToCategory(id){
     return [overallCategory, category, subCategory]
 }
 
+export function mobIdToMobStats(id){
+    if(! data) data = JSON.parse(localStorage.getItem("data")); // to fix first-loading bug
+    return data.data_MobStats[id]
+}
+
+export function decodeElemAttr(elemAttr){
+    if(! data) data = JSON.parse(localStorage.getItem("data")); // to fix first-loading bug
+    if(! elemAttr || elemAttr === "") return ""
+    const elemList = {F: 'Fire', I: 'Ice', L: "Lightining", S: "Poison", H: "Holy"}
+    let returnStrArr = elemAttr.match(/.{2}/g).map(x => {
+        let element = elemList[x[0]]
+        let word = x[1] === "2" ? "Take less damage:" 
+        : x[1] === "3" ? "Take more damage:"     
+        : x[1] === "1" ? "Immune to:"
+        : "Error elem"
+        return `${word} ${element}`
+    })
+    // console.log(returnStrArr)
+    return returnStrArr
+}
+
 // ---------------- utility-funciton -----------------------

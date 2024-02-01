@@ -28,11 +28,17 @@ export async function parseXML(FilePath) {
     return obj
 }
 
-export async function parseXMLinBulk(dirPath) {
+export async function parseXMLinBulk(dirPath, option = "") {
     console.log("running parseXMLinBulk")
     console.log(dirPath)
     let filePathArr = []
-    const subPaths = ["Accessory", "Cap", "Cape", "Coat", "Dragon", "Face", "Glove", "Hair", "Longcoat", "Pants", "PetEquip", "Ring", "Shield", "Shoes", "TamingMob", "Weapon"]
+    let subPaths = []
+    if(option === "Gear"){
+        subPaths = ["Accessory", "Cap", "Cape", "Coat", "Dragon", "Face", "Glove", "Hair", "Longcoat", "Pants", "PetEquip", "Ring", "Shield", "Shoes", "TamingMob", "Weapon"]
+    }
+    if(option === "Mob"){
+        subPaths = []
+    }
     // const subPaths = ["Weapon"] // debugging purpose only
 
     // get list of xml path from 

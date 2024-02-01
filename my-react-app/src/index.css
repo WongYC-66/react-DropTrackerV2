@@ -319,14 +319,19 @@ input:focus{
   justify-content: center;
   width: 100%;
 }
-.targetBox .top{
-  background-color: var(--white2);
-  border-radius: 3px 3px 0 0;
+
+.targetBox .shell{
   width: 100%;
   height: 100%;
+  background-color: var(--white2);
+  border-radius: 3px 3px 0 0;
   text-align: center;
   padding-top: 3%;
+}
+
+.targetBox .top{
   /*  */
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -336,7 +341,7 @@ input:focus{
   font-size: 0.75rem;
 }
 .top img{
-  overflow:auto ;
+  overflow: hidden ;
   scale: 0.8;
   /* max-height: 75%; */
   max-width: 120%;
@@ -345,17 +350,24 @@ input:focus{
 .targetBox .mapList{
   background-color: var(--white2);
   width: 100%;
-  height: 33%;
-  overflow-y: scroll;
+  /* height: 100px; */
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 3px ;
+  padding-bottom: 3%;
 }
 
 .targetBox .mapList a{
   display: block;
   font-size: 0.5rem;
   padding: 0 7.5%;
+}
+
+.targetBox .stats h1{
+  color: red;
+  font-weight: bold;
+  margin-bottom: 3px;
 }
 
 .targetBox .stats .stat-row{
@@ -367,6 +379,14 @@ input:focus{
   padding-right: 10px;
 }
 
+.statsFlex{
+  display: flex;
+  gap: 10px;
+}
+
+.mobElemBox{
+  text-align: left;
+}
 /* TargetBox */
 
 /* ResultBox */
