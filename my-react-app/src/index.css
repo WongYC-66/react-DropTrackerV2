@@ -50,6 +50,7 @@ body {
   width: 85%;
   height: 95%;
   /* border: 1px solid black; */
+  transition: 300ms; 
 }
 
 .grid-item {

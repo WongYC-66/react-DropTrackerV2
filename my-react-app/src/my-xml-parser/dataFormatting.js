@@ -1,5 +1,5 @@
 import util from 'util'
-import { parseItemJSON } from './utility.js';
+import { parseItemJSON, itemIdToCategory } from './utility.js';
 var inspect = util.inspect;
 
 
@@ -163,6 +163,44 @@ export function MapIdDataFormatting(obj) {
         })
     })
     // console.log(simpleData)
+    return simpleData
+}
+
+export function GearStatsDataFormatting(objArr) {
+    // for img.xml from Characters.Wz ONLY
+    // Create better data-structure
+    console.log("running GearStatsDataFormatting")
+    const simpleData = {}   // {id1 : {key1 : value1, key2: value2}, id2 : ..., id3 : ..., ...}
+    // console.log(objArr)
+
+    objArr.forEach(x => {
+        x = x.root
+        const itemId = parseInt(x.attributes.name.split('.')[0]) 
+        // 
+        // if(itemId != "1452017") return
+        console.log(`formatting : ${itemId}`)
+        // console.log(x)
+        // console.log(inspect(x, { colors: true, depth: Infinity }));
+        const stats = {} 
+        // 
+        const unwantedStats = ["icon", "iconRaw", "cash", "medalTag", "notSale", "price", "tradeBlock"]
+        x = x.children.find(y => y.attributes.name === "info") 
+        x.children.forEach(y => {
+            // console.log(y)
+            let key = y.attributes.name
+            let value = y.attributes.value
+            if(unwantedStats.some(z => key === z)) return // if property is one of unwantedStats, skip
+            stats[key] = value  // {key1 : value1, key2: value2}
+        })
+        //  Category are based on item Id range
+        // disabled. enable this will exceed quota to store in localStorage
+        // const [overallCategory, category, subCategory] = itemIdToCategory(itemId)
+        // stats["overallCategory"] = overallCategory 
+        // stats["category"] = category 
+        // stats["subCategory"] = subCategory 
+        // 
+        simpleData[itemId] = stats // {id : {key1 : value1, key2: value2}}
+    })
     return simpleData
 }
 
