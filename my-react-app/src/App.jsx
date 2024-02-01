@@ -14,6 +14,8 @@ import data_Etc from '../data/data_Etc.json'
 import data_Ins from '../data/data_Ins.json'
 import data_MobMap from '../data/data_Mob_MapOnly.json'
 import data_Map from '../data/data_Map.json'
+import data_GearStats from '../data/data_GearStats.json'
+
 
 export const TargetContext = createContext(null)
 export const SearchResultContext = createContext(null)
@@ -26,7 +28,7 @@ function App() {
 
   useEffect(() => {
     const data_item = { ...data_Consume, ...data_Eqp, ...data_Etc, ...data_Ins }
-    data = { data_MB, data_Mob, data_item, data_MobMap, data_Map }
+    data = { data_MB, data_Mob, data_item, data_MobMap, data_Map, data_GearStats }
 
     localStorage.setItem("data", JSON.stringify(data));
   }, []);

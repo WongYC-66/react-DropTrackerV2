@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const OUTPUT_LOCATION = "./data/"
 // var fs = require('node:fs');
-import { diskWriter, parseXML } from './utility.js';
+import { diskWriter, parseXML, parseXMLinBulk } from './utility.js';
 import { MBdataFormatting,
     MBdataFormatting_MapOnly,
     MobIdDataFormatting,
