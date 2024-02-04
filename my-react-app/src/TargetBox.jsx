@@ -65,18 +65,22 @@ function TargetBox() {
       {!isItem ? <></>
         : isEquip ? <EqpUI data={target} />
           : <>
-            <div className='top'>
-              <h1>{target.name}</h1>
-              {strArr.map((x, i) => <p key={i} dangerouslySetInnerHTML={{ __html: x }}></p>)}
-              <img src={imgLink} alt="no image found"></img>
+            <div className='shell'>
+              <div className='top'>
+                <h1>{target.name}</h1>
+                {strArr.map((x, i) => <p key={i} dangerouslySetInnerHTML={{ __html: x }}></p>)}
+                <img src={imgLink} alt="no image found"></img>
+              </div>
             </div>
           </>}
 
-      {!hasTarget && <>
-        <img src="./errorMushroom.png"></img>
-      </>}
+      {
+        !hasTarget && <>
+          <img src="./errorMushroom.png"></img>
+        </>
+      }
 
-    </div>
+    </div >
   )
 }
 
